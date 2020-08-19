@@ -1,0 +1,14 @@
+# app/views/shelters/show_pets.html.erb
+
+<h1>Adoptable Pets from <%= @shelter.name %></h1>
+
+<% @pets.each do |pet| %>
+<%= image_tag pet.image, :size => "260x180" %>
+<h3><%= pet.name %></h3>
+<ul>
+  <li>Age: <%= pet.approx_age %></li>
+  <li>Sex: <%= pet.sex %></li>
+</ul>
+<% end %>
+
+<a href="/shelters/<%= @shelter.id %>">Return to <%= @shelter.name %></a>

@@ -1,0 +1,11 @@
+# app/views/shelters/index.html.erb
+
+<h1>All Shelters</h1>
+
+<p>Click on a shelter name to view details or <a href="/shelters/new">CREATE NEW SHELTER</a></p>
+
+<% @shelters.each do |shelter| %>
+<h3><a href="/shelters/<%= shelter.id %>"><%= shelter.name %></a></h3>
+<% end %>
+
+<a href="/">Return to main page</a>
