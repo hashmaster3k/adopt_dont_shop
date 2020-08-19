@@ -9,7 +9,7 @@ class SheltersController < ApplicationController
 
   def show_pets
     @shelter = Shelter.find(params[:id])
-    @pets = Pet.all.find_all {|pet| pet.shelter_id == params[:id].to_i && pet.adopted == "false"}
+    @pets = Pet.all.find_all {|pet| pet.shelter_id == params[:id].to_i && pet.adopted? == false}
   end
 
   def new
