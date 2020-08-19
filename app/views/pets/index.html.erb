@@ -1,0 +1,18 @@
+# apps/views/pets/index.html.erb
+
+<h1>All Pets</h1>
+
+<h2>Click on pet image to get details about pet.</h2>
+
+<% @pets.each do |pet| %>
+<a href='/pets/<%= pet.id %>'><%= image_tag pet.image, :size => "260x180" %></a>
+<h3><%= pet.name %></h3>
+<ul>
+  <li>Age: <%= pet.approx_age %></li>
+  <li>Sex: <%= pet.sex %></li>
+  <% shelter = @shelters.find {|shelter| shelter.id == pet.shelter_id} %>
+  <li>Shelter: <a href="/shelters/<%= shelter.id %>"><%= shelter.name %></a></li>
+</ul>
+<% end %>
+
+<a href="/">Return to main page</a>
