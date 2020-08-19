@@ -5,8 +5,7 @@
 <form action="/shelters/<%= @shelter.id %>/pets" method='post'>
   <input type='hidden' name='authenticity_token' value='<% form_authenticity_token %>'>
   <input type='hidden' name='pet[shelter_id]' value='<%= @shelter.id %>'>
-  <input type='hidden' name='pet[adopted]' value='false'>
-  
+
   <label for='pet[name]'>Pet name:</label><br>
   <input type='text' name='pet[name]'>
   <br><br>
