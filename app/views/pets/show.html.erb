@@ -8,7 +8,7 @@
 <ul>
   <li>Age: <%= @pet.approx_age %></li>
   <li>Sex: <%= @pet.sex %></li>
-  <li>Adoption Status: <% if @pet.adopted == "false"%>
+  <li>Adoption Status: <% if @pet.adopted? == false%>
                         <%= "Ready for adoption!" %>
                         <% else %>
                         <%= "Gone to a great home!" %>
