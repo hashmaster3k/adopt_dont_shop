@@ -1,3 +1,5 @@
+# spec/features/shelters/show_spec.rb
+
 require 'rails_helper'
 
 RSpec.describe 'shelter show page' do

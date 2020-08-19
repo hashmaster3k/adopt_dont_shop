@@ -1,4 +1,4 @@
-# app/views/shelters/show_pets.html.erb
+# app/views/shelters/<%= @shelter.id %>/show_pets.html.erb
 
 <h1>Adoptable Pets from <%= @shelter.name %></h1>
 
@@ -11,4 +11,4 @@
 </ul>
 <% end %>
 
-<a href="/shelters/<%= @shelter.id %>">Return to <%= @shelter.name %></a>
+<a href="/shelters/<%= @shelter.id %>">Return to <%= @shelter.name %></a></p>

@@ -1,3 +1,5 @@
+# spec/features/shelters/new_spec.rb
+
 require 'rails_helper'
 
 RSpec.describe 'shelters new page' do

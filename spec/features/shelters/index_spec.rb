@@ -1,3 +1,5 @@
+# spec/features/shelters/index_spec.rb
+
 require 'rails_helper'
 
 RSpec.describe 'shelters index page' do
