@@ -1,0 +1,18 @@
+# app/views/shelters/show.html.erb
+
+<h3><%= @shelter.name %></h3>
+
+<p><%= @shelter.address %><br><%= @shelter.city %>, <%= @shelter.state %> <%= @shelter.zip %></p>
+
+<p><a href="/shelters/<%= @shelter.id %>/pets">View adoptable pets from this shelter!</a></p>
+
+<form action="/shelters/<%= @shelter.id %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="delete shelter">
+</form>
+
+<!-- style="background: none!important; border: none; padding: 0!important; text-decoration: underline; cursor: pointer;" -->
+
+<p><a href="/shelters/<%= @shelter.id %>/edit">Update shelter</a> or
+<a href="/shelters">return to all shelters</a></p>
