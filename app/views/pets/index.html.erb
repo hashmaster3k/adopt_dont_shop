@@ -7,21 +7,23 @@
 <article class='all-pets'>
 <% @pets.each do |pet| %>
   <section class='pet-box'>
-    <a href='/pets/<%= pet.id %>'><%= image_tag pet.image, :size => "260x180" %></a>
+      <%= link_to "/pets/#{pet.id}" do %>
+        <%= image_tag pet.image, :class => 'pet-image'  %>
+      <% end %>
+    <div class='pet-info'>
+      <h3><%= pet.name %></h3>
 
-    <h3><%= pet.name %></h3>
-
-    <ul>
-      <li>Age: <%= pet.approx_age %></li>
-      <li>Sex: <%= pet.sex %></li>
-      <% shelter = @shelters.find {|shelter| shelter.id == pet.shelter_id} %>
-      <li>Shelter: <a href="/shelters/<%= shelter.id %>"><%= shelter.name %></a></li>
-    </ul>
-
-    <p>Has <%= pet.name %> been adopted?
-      <%= button_to 'Remove pet', "/pets/#{pet.id}", method: :delete %>
-    </p>
-
+      <ul>
+        <li>Age: <%= pet.approx_age %></li>
+        <li>Sex: <%= pet.sex %></li>
+        <% shelter = @shelters.find {|shelter| shelter.id == pet.shelter_id} %>
+        <li>Shelter: <a href="/shelters/<%= shelter.id %>"><%= shelter.name %></a></li>
+      </ul>
+    </div>
+    <div class='pet-buttons'>
+      <%= button_to 'Update Pet', "/pets/#{pet.id}/edit", method: :get %>
+      <%= button_to 'Remove Pet', "/pets/#{pet.id}", method: :delete %>
+    </div>
   </section>
   <br>
 <% end %>

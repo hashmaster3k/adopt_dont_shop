@@ -58,14 +58,30 @@ RSpec.describe 'pets index page' do
                shelter_id: shelter_1.id)
 
     visit '/pets'
-
-    expect(page).to have_button('Remove pet')
-
-    click_button 'Remove pet'
+    click_button 'Remove Pet'
 
     expect(current_path).to eq('/pets')
     expect(page).to_not have_content(pet_1.approx_age)
     expect(page).to_not have_content(pet_1.sex)
+  end
+
+  it 'has links to update and delete pet' do
+    shelter_1 = Shelter.create(name:'Shelter 1',
+                               address:'123 Bradford Rd',
+                               city:'Union City',
+                               state:'CA',
+                               zip:90210)
+
+    pet_1 = Pet.create(image: '1.jpg',
+               name: 'Johnny',
+               approx_age: 3,
+               sex: 'male',
+               shelter_id: shelter_1.id)
+
+    visit '/pets'
+    expect(page).to have_button('Remove Pet')
+    expect(page).to have_button('Update Pet')
+
   end
 
 end
