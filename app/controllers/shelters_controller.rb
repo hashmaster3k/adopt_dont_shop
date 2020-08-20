@@ -9,7 +9,7 @@ class SheltersController < ApplicationController
 
   def show_pets
     @shelter = Shelter.find(params[:id])
-    @pets = Pet.all.find_all {|pet| pet.shelter_id == params[:id].to_i && pet.adopted == false}
+    @pets = @shelter.pets.where(adopted: false)
   end
 
   def new
@@ -26,13 +26,7 @@ class SheltersController < ApplicationController
 
   def update
     shelter = Shelter.find(params[:id])
-
-    shelter.update(name: params[:shelter][:name],
-                   address: params[:shelter][:address],
-                   city: params[:shelter][:city],
-                   state: params[:shelter][:state],
-                   zip: params[:shelter][:zip])
-
+    shelter.update(shelter_info)
     redirect_to "/shelters/#{shelter.id}"
   end
 

@@ -1,6 +1,52 @@
 <h1>Update <%= @shelter.name %> Information</h1>
 
+<%= form_tag "/shelters/#{@shelter.id}", method: :patch do %>
+  <%= label_tag 'Shelter Name:' %><br>
+  <%= text_field_tag :name, @shelter.name %><br><br>
+
+  <%= label_tag 'Shelter Address:' %><br>
+  <%= text_field_tag :address, @shelter.address %><br><br>
+
+  <%= label_tag 'Shelter City:' %>  <br>
+  <%= text_field_tag :city, @shelter.city %><br><br>
+
+  <%= label_tag 'Shelter State:' %><br>
+  <%= select_tag(:state, options_for_select([['Alabama', 'AL'], ['Alaska', 'AK'],
+                                            ['Arizona', 'AR'], ['Arkansas', 'CA'],
+                                            ['California', 'CO'], ['Colorado', 'CO'],
+                                            ['Connecticut', 'DE'], ['Delaware', 'FL'],
+                                            ['Florida', 'GA'], ['Georgia', 'HI'],
+                                            ['Hawaii', 'ID'], ['Idaho', 'IL'],
+                                            ['Illinois', 'IN'], ['Indiana', 'IA'],
+                                            ['Iowa', 'KS' ], ['Kansas', 'KY'],
+                                            ['Kentucky', 'LA'], ['Louisiana', 'ME'],
+                                            ['Maine', 'MD'], ['Maryland', 'MA'],
+                                            ['Massachusetts', 'MI'], ['Michigan', 'MN'],
+                                            ['Minnesota', 'MS'], ['Mississippi', 'MO'],
+                                            ['Missouri', 'MT'], ['Montana', 'NE'],
+                                            ['Nebraska', 'NV'], ['Nevada', 'NH'],
+                                            ['New Hampshire', 'NJ'], ['New Jersey', 'NM'],
+                                            ['New Mexico', 'NY'], ['New York', 'NC'],
+                                            ['North Carolina', 'ND'], ['North Dakota', 'OH'],
+                                            ['Ohio', 'OK'], ['Oklahoma', 'OR'],
+                                            ['Oregon', 'PA'], ['Pennsylvania', 'RI'],
+                                            ['Rhode Island', 'SC'], ['South Carolina', 'SD'],
+                                            ['South Dakota', 'TN'], ['Tennessee', 'TX'],
+                                            ['Texas', 'UT'], ['Utah', 'VT'],
+                                            ['Vermont', 'VA'], ['Virginia', 'WA'],
+                                            ['Washington', 'WV'], ['West Virginia', 'WI'],
+                                            ['Wisconsin', 'WI'], ['Wyoming', 'WY']])) %><br><br>
+
+
+  <%= label_tag 'Shelter Zipcode:' %><br>
+  <%= text_field_tag :zip,  @shelter.zip, maxlength: 5 %><br><br>
+
+  <%= submit_tag 'Update Shelter' %>
+<% end %>
+
+<!--
 <form action="/shelters/<%= @shelter.id %>" method='post'>
+
   <input type='hidden' name='authenticity_token' value='<% form_authenticity_token %>'>
   <input type="hidden" name="_method" value="PATCH">
 
@@ -72,3 +118,4 @@
   <br><br>
   <input type='submit' value='Update Shelter'>
 </form>
+-->
