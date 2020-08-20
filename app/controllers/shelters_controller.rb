@@ -25,10 +25,6 @@ class SheltersController < ApplicationController
     redirect_to '/shelters'
   end
 
-  def create_pet
-    @shelter = Shelter.find(params[:id])
-  end
-
   def edit
     @shelter = Shelter.find(params[:id])
   end

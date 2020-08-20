@@ -8,6 +8,10 @@ class PetsController < ApplicationController
     @pet = Pet.find(params[:id])
   end
 
+  def new
+    @shelter = Shelter.find(params[:id])
+  end
+
   def create
     pet = Pet.new(name: params[:pet][:name],
                   approx_age: params[:pet][:approx_age],

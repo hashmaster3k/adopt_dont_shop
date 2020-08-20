@@ -1,4 +1,4 @@
-# spec/features/pets/show_spec.rb
+# spec/features/pets/create_spec.rb
 
 require 'rails_helper'
 
