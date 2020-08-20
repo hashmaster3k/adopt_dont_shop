@@ -13,13 +13,7 @@ class PetsController < ApplicationController
   end
 
   def create
-    pet = Pet.new(name: params[:pet][:name],
-                  approx_age: params[:pet][:approx_age],
-                  sex: params[:pet][:sex],
-                  image: params[:pet][:image],
-                  description: params[:pet][:description],
-                  shelter_id: params[:pet][:shelter_id],
-                  adopted: false)
+    pet = Pet.new(pet_info.merge({:adopted=>false}))
     pet.save
     redirect_to "/shelters/#{params[:id]}/pets"
   end
@@ -27,5 +21,16 @@ class PetsController < ApplicationController
   def destroy
     Pet.destroy(params[:id])
     redirect_to('/pets')
+  end
+
+  private
+  def pet_info
+    params[:shelter_id] = params[:id].to_i
+    params.permit(:name,
+                  :approx_age,
+                  :sex,
+                  :image,
+                  :description,
+                  :shelter_id)
   end
 end

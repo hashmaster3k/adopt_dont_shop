@@ -1,7 +1,7 @@
 # app/views/pets/new.html.erb
 
 <h1>Add New Pet to <%= @shelter.name %></h1>
-
+<!--
 <form action="/shelters/<%= @shelter.id %>/pets" method='post'>
   <input type='hidden' name='authenticity_token' value='<% form_authenticity_token %>'>
   <input type='hidden' name='pet[shelter_id]' value='<%= @shelter.id %>'>
@@ -22,4 +22,28 @@
   <input type='textarea' name='pet[description]'>
   <br><br>
   <input type='submit' value='Add pet'>
-</form>
+</form> -->
+
+<%= form_tag "/shelters/#{@shelter.id}/pets" do %>
+  <%= label_tag 'Pet Name:' %>
+  <br>
+  <%= text_field_tag :name %>
+  <br><br>
+  <%= label_tag 'Approxamite age:' %>
+  <br>
+  <%= text_field_tag :approx_age %>
+  <br><br>
+  <%= label_tag 'Sex:' %>
+  <br>
+  <%= text_field_tag :sex %>
+  <br><br>
+  <%= label_tag 'Image:' %>
+  <br>
+  <%= text_field_tag :image %>
+  <br><br>
+  <%= label_tag 'Description:' %>
+  <br>
+  <%= text_area_tag :description, nil, size:'16x5' %>
+  <br><br>
+  <%= submit_tag 'Add pet' %>
+<% end %>

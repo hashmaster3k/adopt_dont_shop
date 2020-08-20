@@ -13,11 +13,11 @@ RSpec.describe 'add new pet to shelter page' do
 
     visit "/shelters/#{shelter_1.id}/pets/new"
 
-    fill_in 'pet[name]', with: 'Patti'
-    fill_in 'pet[approx_age]', with: '1'
-    fill_in 'pet[sex]', with: 'female'
-    fill_in 'pet[image]', with: '1.jpg'
-    fill_in 'pet[description]', with: 'Has a heart of gold!'
+    fill_in :name, with: 'Patti'
+    fill_in :approx_age, with: '1'
+    fill_in :sex, with: 'female'
+    fill_in :image, with: '1.jpg'
+    fill_in :description, with: 'Has a heart of gold!'
 
     click_button 'Add pet'
 
