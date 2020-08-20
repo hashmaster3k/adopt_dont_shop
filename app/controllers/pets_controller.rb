@@ -13,8 +13,7 @@ class PetsController < ApplicationController
   end
 
   def create
-    pet = Pet.new(pet_info.merge({:adopted=>false}))
-    pet.save
+    Pet.create(pet_info.merge({:adopted=>false}))
     redirect_to "/shelters/#{params[:id]}/pets"
   end
 
