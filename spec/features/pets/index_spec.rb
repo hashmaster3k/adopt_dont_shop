@@ -42,4 +42,26 @@ RSpec.describe 'pets index page' do
 
   end
 
+  it 'has a link to delete a pet' do
+    shelter_1 = Shelter.create(name:'Shelter 1',
+                               address:'123 Bradford Rd',
+                               city:'Union City',
+                               state:'CA',
+                               zip:90210)
+
+    Pet.create(image: '1.jpg',
+               name: 'Johnny',
+               approx_age: 3,
+               sex: 'male',
+               shelter_id: shelter_1.id)
+
+    visit '/pets'
+
+    expect(page).to have_button('Remove pet')
+    expect(Pet.count).to eq(1)
+    click_button 'Remove pet'
+    expect(Pet.count).to eq(0)
+    expect(current_path).to eq('/pets')
+  end
+
 end
