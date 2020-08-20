@@ -3,25 +3,20 @@
 <h1>Add New Pet to <%= @shelter.name %></h1>
 
 <%= form_tag "/shelters/#{@shelter.id}/pets" do %>
-  <%= label_tag 'Pet Name:' %>
-  <br>
-  <%= text_field_tag :name %>
-  <br><br>
-  <%= label_tag 'Approxamite age:' %>
-  <br>
-  <%= text_field_tag :approx_age %>
-  <br><br>
-  <%= label_tag 'Sex:' %>
-  <br>
-  <%= text_field_tag :sex %>
-  <br><br>
-  <%= label_tag 'Image:' %>
-  <br>
-  <%= text_field_tag :image %>
-  <br><br>
-  <%= label_tag 'Description:' %>
-  <br>
-  <%= text_area_tag :description, nil, size:'16x5' %>
-  <br><br>
+  <%= label_tag 'Pet Name:' %><br>
+  <%= text_field_tag :name %><br><br>
+
+  <%= label_tag 'Approxamite age:' %><br>
+  <%= text_field_tag :approx_age %><br><br>
+
+  <%= label_tag 'Sex:' %>  <br>
+  <%= text_field_tag :sex %><br><br>
+
+  <%= label_tag 'Image:' %><br>
+  <%= text_field_tag :image %><br><br>
+
+  <%= label_tag 'Description:' %><br>
+  <%= text_area_tag :description, nil, size:'16x5' %><br><br>
+  
   <%= submit_tag 'Add pet' %>
 <% end %>
