@@ -7,11 +7,11 @@ RSpec.describe 'shelters new page' do
   it 'has form for creating new shelter' do
     visit '/shelters/new'
 
-    fill_in 'shelter[name]', with: 'Test Shelter'
-    fill_in 'shelter[address]', with: '123 1st St.'
-    fill_in 'shelter[city]', with: 'Denver'
-    select 'Colorado', from: 'shelter[state]'
-    fill_in 'shelter[zip]', with: '80102'
+    fill_in :name, with: 'Test Shelter'
+    fill_in :address, with: '123 1st St.'
+    fill_in :city, with: 'Denver'
+    select 'Colorado', from: :state
+    fill_in :zip, with: '80102'
 
     click_button 'Create Shelter'
 
