@@ -31,10 +31,12 @@ RSpec.describe 'pets index page' do
 
     visit '/pets'
 
+    expect(page).to have_xpath("//img['#{pet_1.image}']")
     expect(page).to have_content(pet_1.name)
     expect(page).to have_content(pet_1.approx_age)
     expect(page).to have_content(pet_1.sex)
     expect(page).to have_content(shelter_1.name)
+    expect(page).to have_xpath("//img['#{pet_2.image}']")
     expect(page).to have_content(pet_2.name)
     expect(page).to have_content(pet_2.approx_age)
     expect(page).to have_content(pet_2.sex)
@@ -49,7 +51,7 @@ RSpec.describe 'pets index page' do
                                state:'CA',
                                zip:90210)
 
-    Pet.create(image: '1.jpg',
+    pet_1 = Pet.create(image: '1.jpg',
                name: 'Johnny',
                approx_age: 3,
                sex: 'male',
@@ -58,10 +60,12 @@ RSpec.describe 'pets index page' do
     visit '/pets'
 
     expect(page).to have_button('Remove pet')
-    expect(Pet.count).to eq(1)
+
     click_button 'Remove pet'
-    expect(Pet.count).to eq(0)
+
     expect(current_path).to eq('/pets')
+    expect(page).to_not have_content(pet_1.approx_age)
+    expect(page).to_not have_content(pet_1.sex)
   end
 
 end

@@ -47,7 +47,6 @@ RSpec.describe 'shelter show page' do
 
     click_button "delete shelter"
 
-    expect(Shelter.all.length).to eq(0)
     expect(current_path).to eq('/shelters')
   end
 end

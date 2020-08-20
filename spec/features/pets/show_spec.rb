@@ -18,6 +18,7 @@ RSpec.describe 'shows individual pet based on :id' do
 
     visit "/pets/#{pet_1.id}"
 
+    expect(page).to have_xpath("//img['#{pet_1.image}']")
     expect(page).to have_content(pet_1.name)
     expect(page).to have_content(pet_1.description)
     expect(page).to have_content("Age: #{pet_1.approx_age}")

@@ -19,9 +19,9 @@ RSpec.describe 'shelter show pets' do
                          adopted: false,
                          shelter_id: shelter_1.id)
 
-    @pet_2 =  Pet.create(image: '2.jpg',
+    pet_2 =  Pet.create(image: '2.jpg',
                          name: 'Maggie',
-                         approx_age: 3,
+                         approx_age: 4,
                          sex: 'female',
                          description: 'A great pet!',
                          adopted: true,
@@ -29,9 +29,14 @@ RSpec.describe 'shelter show pets' do
 
     visit "/shelters/#{shelter_1.id}/pets"
 
+    expect(page).to have_xpath("//img['#{pet_1.image}']")
     expect(page).to have_content(pet_1.name)
     expect(page).to have_content(pet_1.approx_age)
     expect(page).to have_content(pet_1.sex)
+
+    expect(page).to_not have_content(pet_2.name)
+    expect(page).to_not have_content(pet_2.approx_age)
+    expect(page).to_not have_content(pet_2.sex)
   end
 
   it 'has link to create new pet' do
