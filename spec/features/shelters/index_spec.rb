@@ -22,10 +22,17 @@ RSpec.describe 'shelters index page' do
     expect(page).to have_content(shelter_2.name)
   end
 
-  it 'has link to create new shelter' do
+  it 'has buttons for creating, updating and deleting shelter' do
+    Shelter.create(name:'Shelter 1',
+                   address:'123 Bradford Rd',
+                   city:'Union City',
+                   state:'CA',
+                   zip:90210)
+
     visit '/shelters'
+
     expect(page).to have_link('CREATE NEW SHELTER')
-    click_link "CREATE NEW SHELTER"
-    expect(current_path).to eq('/shelters/new')
+    expect(page).to have_button('Update Shelter')
+    expect(page).to have_button('Delete Shelter')
   end
 end
