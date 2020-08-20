@@ -1,0 +1,33 @@
+# apps/views/pets/index.html.erb
+
+<h1>All Pets</h1>
+
+<h2>Click on pet image to get details about pet.</h2>
+
+<% @pets.each do |pet| %>
+  <div class='pet-box'>
+    <a href='/pets/<%= pet.id %>'><%= image_tag pet.image, :size => "260x180" %></a>
+
+    <h3><%= pet.name %></h3>
+
+    <ul>
+      <li>Age: <%= pet.approx_age %></li>
+      <li>Sex: <%= pet.sex %></li>
+      <% shelter = @shelters.find {|shelter| shelter.id == pet.shelter_id} %>
+      <li>Shelter: <a href="/shelters/<%= shelter.id %>"><%= shelter.name %></a></li>
+    </ul>
+
+    <p>Has <%= pet.name %> been adopted?
+      <form action="/pets/<%= pet.id %>" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Remove pet">
+      </form>
+    </p>
+
+  </div>
+  <br>
+<% end %>
+
+
+<a href="/">Return to main page</a>
