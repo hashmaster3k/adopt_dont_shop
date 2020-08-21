@@ -150,3 +150,14 @@ a:active {
   align-items: center;
   text-align: center;
 }
+
+.page-title {
+  text-align: center;
+}
+
+.create-pet {
+  margin: 20px;
+  text-align: center;
+  padding: 15px;
+  background-color: #a9dbc2;
+}

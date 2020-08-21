@@ -1,22 +1,31 @@
-# app/views/shelters/<%= @shelter.id %>/show_pets.html.erb
+<div class='page-title'>
+  <h1>Adoptable Pets from <%= @shelter.name %></h1>
+</div>
 
-<h1>Adoptable Pets from <%= @shelter.name %></h1>
+<article class='all-pets'>
+  <% @pets.each do |pet| %>
+    <section class='pet-box'>
+        <%= link_to "/pets/#{pet.id}" do %>
+          <%= image_tag pet.image, :class => 'pet-image'  %>
+        <% end %>
 
-<% @pets.each do |pet| %>
-  <div class='pet-box'>
-    <%= image_tag pet.image, :size => "260x180" %>
+      <div class='pet-info'>
+        <h3><%= link_to pet.name, "/pets/#{pet.id}", :class => 'pet-link' %></h3>
 
-    <h3><%= pet.name %></h3>
+        <ul>
+          <li>Age: <%= pet.approx_age %></li>
+          <li>Sex: <%= pet.sex %></li>
+        </ul>
+      </div>
 
-    <ul>
-      <li>Age: <%= pet.approx_age %></li>
-      <li>Sex: <%= pet.sex %></li>
-    </ul>
+      <div class='pet-buttons'>
+        <%= button_to 'Update Pet', "/pets/#{pet.id}/edit", method: :get %>
+        <%= button_to 'Remove Pet', "/pets/#{pet.id}", method: :delete %>
+      </div>
+    </section>
+  <% end %>
+</article>
 
-  </div>
-  <br>
-<% end %>
-
-<p><a href="/shelters/<%= @shelter.id %>/pets/new">Add new pet to shelter</a>
- or
-<a href="/shelters/<%= @shelter.id %>">Return to <%= @shelter.name %></a></p>
+<div class='create-pet'>
+  <%= button_to 'Create New Pet', "/shelters/#{@shelter.id}/pets/new", method: :get %>
+</div>
