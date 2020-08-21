@@ -17,13 +17,13 @@ RSpec.describe 'pets index page' do
                                zip:90310)
 
 
-    pet_1 = Pet.create(image: '1.jpg',
+    pet_1 = Pet.create(image: 'dog1.jpg',
                        name: 'Johnny',
                        approx_age: 3,
                        sex: 'male',
                        shelter_id: shelter_1.id)
 
-    pet_2 = Pet.create(image: '2.jpg',
+    pet_2 = Pet.create(image: 'dog2.jpg',
                        name: 'Marg',
                        approx_age: 2,
                        sex: 'female',
@@ -51,7 +51,7 @@ RSpec.describe 'pets index page' do
                                state:'CA',
                                zip:90210)
 
-    pet_1 = Pet.create(image: '1.jpg',
+    pet_1 = Pet.create(image: 'dog1.jpg',
                name: 'Johnny',
                approx_age: 3,
                sex: 'male',
@@ -72,7 +72,7 @@ RSpec.describe 'pets index page' do
                                state:'CA',
                                zip:90210)
 
-    pet_1 = Pet.create(image: '1.jpg',
+    pet_1 = Pet.create(image: 'dog1.jpg',
                name: 'Johnny',
                approx_age: 3,
                sex: 'male',

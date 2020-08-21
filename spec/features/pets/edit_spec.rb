@@ -11,7 +11,7 @@ RSpec.describe 'edit individual pet info' do
                                 state: 'CA',
                                 zip: 90210)
 
-     pet_1 = Pet.create(image: '1.jpg',
+     pet_1 = Pet.create(image: 'dog1.jpg',
                         name: 'Johnny',
                         approx_age: 3,
                         sex: 'male',
@@ -23,7 +23,7 @@ RSpec.describe 'edit individual pet info' do
     fill_in :name, with: 'Patti'
     fill_in :approx_age, with: '2'
     fill_in :sex, with: 'female'
-    fill_in :image, with: '1.jpg'
+    fill_in :image, with: 'cat1.jpg'
     fill_in :description, with: 'Has a heart of gold!'
 
     click_button 'Update Info'

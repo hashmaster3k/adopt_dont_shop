@@ -11,7 +11,7 @@ RSpec.describe 'shelter show pets' do
                                 state: 'CA',
                                 zip: 90210)
 
-    pet_1 =  Pet.create(image: '1.jpg',
+    pet_1 =  Pet.create(image: 'dog1.jpg',
                          name: 'Johnny',
                          approx_age: 3,
                          sex: 'male',
@@ -19,7 +19,7 @@ RSpec.describe 'shelter show pets' do
                          adopted: false,
                          shelter_id: shelter_1.id)
 
-    pet_2 =  Pet.create(image: '2.jpg',
+    pet_2 =  Pet.create(image: 'dog2.jpg',
                          name: 'Maggie',
                          approx_age: 4,
                          sex: 'female',

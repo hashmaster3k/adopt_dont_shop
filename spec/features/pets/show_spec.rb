@@ -10,7 +10,7 @@ RSpec.describe 'shows individual pet based on :id' do
                                zip:90210)
 
 
-    pet_1 = Pet.create(image: '1.jpg',
+    pet_1 = Pet.create(image: 'dog1.jpg',
                        name: 'Johnny',
                        approx_age: 3,
                        sex: 'male',

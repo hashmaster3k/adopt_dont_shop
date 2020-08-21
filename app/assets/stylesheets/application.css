@@ -13,13 +13,157 @@
  *= require_tree .
  *= require_self
  */
-
-.pet-box {
-  border: 3px solid gray;
-  padding: 10px;
-  width: 350px;
+html {
+  font-family: 'Roboto', sans-serif;
 }
 
-/* h3.pet-box {
+header {
+  color: white;
+  padding: 10px;
+  background-color: rgb(24, 210, 141);
+}
+
+body {
+  background-color: #dedede
+}
+
+nav {
+  background-color: rgba(219, 245, 6, .65);
   text-align: center;
-} */
+  padding: 15px;
+  display: flex;
+  justify-content: space-around;
+}
+
+a:link.nav-link {
+  text-decoration: none;
+  font-weight: bold;
+  color: rgb(24, 210, 141);
+}
+
+a:visited.nav-link {
+  text-decoration: none;
+  font-weight: bold;
+  color: rgb(24, 210, 141);
+}
+
+a:hover.nav-link {
+  text-decoration: none;
+  font-weight: bold;
+  color: hotpink;
+}
+
+a:active.nav-link {
+  text-decoration: none;
+  font-weight: bold;
+  color: rgb(219, 245, 6);
+}
+
+.shelter-box {
+  background-color: #17d28c59;
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+a:link.shelter-header {
+  text-decoration: none;
+  font-weight: bold;
+  color: hotpink;
+}
+
+a:visited.shelter-header {
+  text-decoration: none;
+  font-weight: bold;
+  color: hotpink;
+}
+
+a:hover.shelter-header {
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+}
+
+a:active.shelter-header {
+  text-decoration: none;
+  font-weight: bold;
+  color: hotpink;
+}
+
+.shelter-buttons {
+  display: grid;
+  justify-items: right;
+  align-items: center;
+}
+
+#create-shelter-button {
+  background-color: #17d28c59;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+}
+
+.all-pets {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pet-box {
+  background-color: #17d28c59;
+  padding: 10px;
+  margin: 10px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pet-image {
+  width: 300px;
+  height: 180px;
+}
+
+a.pet-link {
+  text-align: center;
+}
+
+a:link.pet-link {
+  text-decoration: none;
+  font-weight: bold;
+  color: hotpink;
+}
+
+a:visited.pet-link {
+  text-decoration: none;
+  font-weight: bold;
+  color: hotpink;
+}
+
+a:hover.pet-link {
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+}
+
+a:active.pet-link {
+  text-decoration: none;
+  font-weight: bold;
+  color: hotpink;
+}
+
+.pet-buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#sarah {
+  height: 250px;
+  width: 300px;
+  float: right;
+  margin: 10px;
+}
+
+.lyrics {
+  padding: 10px;
+}
