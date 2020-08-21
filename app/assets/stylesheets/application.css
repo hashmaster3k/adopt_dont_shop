@@ -190,3 +190,14 @@ a:active {
 .pbid-header-image img{
   max-height: 100%;
 }
+
+.edit-info {
+  display: flex;
+  justify-content: center;
+}
+
+.edit-info-box {
+  align-text: center;
+  background-color: coral;
+    padding: 50px;
+}
