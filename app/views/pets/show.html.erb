@@ -1,18 +1,21 @@
-# app/views/pets/show.html.erb
-
-<h1>Meet <%= @pet.name %>!</h1>
-
-<%= image_tag @pet.image, :size => "260x180" %>
-
-<p>About: <br><%= @pet.description %></p>
-<ul>
-  <li>Age: <%= @pet.approx_age %></li>
-  <li>Sex: <%= @pet.sex %></li>
-  <li>Adoption Status: <% if @pet.adopted? == false%>
-                        <%= "Ready for adoption!" %>
-                        <% else %>
-                        <%= "Gone to a great home!" %>
-                        <% end %></li>
-</ul>
-
-<a href="/pets/">Return to all pets</a>
+<article class='pbid'>
+  <section class='pbid-header'>
+    <div class='pbid-header-info'>
+      <div class='pbid-header-info-text'>
+        <h1>Meet <%= @pet.name %>!</h1>
+        <p>About: <br><%= @pet.description %></p>
+        <ul>
+          <li>Age: <%= @pet.approx_age %></li>
+          <li>Sex: <%= @pet.sex %></li>
+          <li>Adoption Status: <% if @pet.adopted? == false%>
+                                <%= "Ready for adoption!" %>
+                                <% else %>
+                                <%= "Gone to a great home!" %>
+                                <% end %></li>
+        </ul>      </div>
+    </div>
+    <div class='pbid-header-image'>
+      <%= image_tag  "#{@pet.image}"%>
+    </div>
+  </section>
+</article>

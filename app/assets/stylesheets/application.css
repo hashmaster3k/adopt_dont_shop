@@ -161,3 +161,32 @@ a:active {
   padding: 15px;
   background-color: #a9dbc2;
 }
+
+.pbid-header {
+  display: flex;
+  justify-content: space-between;
+  margin: 50px;
+  background-color: #17d28c59;
+  height: 300px;
+}
+
+.pbid-header-info {
+  padding-bottom: 15px;
+  padding-left: 40px;
+  width: 400px;
+}
+
+.pbid-header-info h1 {
+  font-size: 30px;
+}
+.pbid-header-info p {
+  font-size: 25px;
+}
+
+.pbid-header-image {
+  height: inherit;
+}
+
+.pbid-header-image img{
+  max-height: 100%;
+}
