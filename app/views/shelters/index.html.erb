@@ -1,20 +1,18 @@
-# app/views/shelters/index.html.erb
-
-<h1>All Shelters</h1>
-
-<p>Click on a shelter name to view details or <a href="/shelters/new">CREATE NEW SHELTER</a></p>
-
 <article class='all-shelters'>
   <% @shelters.each do |shelter| %>
     <div class='shelter-box' id="<%= shelter.id %>">
-      <div class='shelter-header'>
-      <h3><a href="/shelters/<%= shelter.id %>"><%= shelter.name %></a></h3>
-      </div>
+
+      <h3><%= link_to shelter.name, "/shelters/#{shelter.id}", :class => 'shelter-header' %></h3>
+
       <div class='shelter-buttons'>
         <%= button_to 'Update Shelter', "/shelters/#{shelter.id}/edit", method: :get %>
         <%= button_to 'Delete Shelter', "/shelters/#{shelter.id}", method: :delete %>
       </div>
     </div>
   <% end %>
+
+  <div id='create-shelter-button'>
+    <%= button_to 'CREATE NEW SHELTER', '/shelters/new', method: :get %>
+  </div>
+
 </article>
-<a href="/">Return to main page</a>
