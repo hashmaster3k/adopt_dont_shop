@@ -31,7 +31,7 @@ RSpec.describe 'shelters index page' do
 
     visit '/shelters'
 
-    expect(page).to have_link('CREATE NEW SHELTER')
+    expect(page).to have_button('CREATE NEW SHELTER')
     expect(page).to have_button('Update Shelter')
     expect(page).to have_button('Delete Shelter')
   end
