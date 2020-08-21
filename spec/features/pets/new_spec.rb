@@ -9,7 +9,8 @@ RSpec.describe 'add new pet to shelter page' do
                                 address: '123 Bradford Rd',
                                 city: 'Union City',
                                 state: 'CA',
-                                zip: 90210)
+                                zip: 90210,
+                                image: 'building_1.jpg')
 
     visit "/shelters/#{shelter_1.id}/pets/new"
 

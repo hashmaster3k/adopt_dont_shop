@@ -31,11 +31,11 @@ RSpec.describe 'shelter show pets' do
 
     expect(page).to have_xpath("//img['#{pet_1.image}']")
     expect(page).to have_content(pet_1.name)
-    expect(page).to have_content(pet_1.approx_age)
+    expect(page).to have_content("Age: #{pet_1.approx_age}")
     expect(page).to have_content(pet_1.sex)
 
     expect(page).to_not have_content(pet_2.name)
-    expect(page).to_not have_content(pet_2.approx_age)
+    expect(page).to_not have_content("Age: #{pet_2.approx_age}")
     expect(page).to_not have_content(pet_2.sex)
   end
 

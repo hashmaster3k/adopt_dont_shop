@@ -1,8 +1,6 @@
-# app/views/pets/new.html.erb
+<h1>Fill in form below:</h1>
 
-<h1>Add New Pet to <%= @shelter.name %></h1>
-
-<%= form_tag "/shelters/#{@shelter.id}/pets" do %>
+<%= form_tag "/shelters/#{@shelter_id}/pets" do %>
   <%= label_tag 'Pet Name:' %><br>
   <%= text_field_tag :name %><br><br>
 
@@ -17,8 +15,6 @@
 
   <%= label_tag 'Description:' %><br>
   <%= text_area_tag :description, nil, size:'16x5' %><br><br>
-
-  <%= hidden_field_tag :shelter_id, @shelter.id %>
 
   <%= submit_tag 'Add Pet' %>
 <% end %>

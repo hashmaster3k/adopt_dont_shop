@@ -5,30 +5,31 @@ class PetsController < ApplicationController
   end
 
   def show
-    @pet = Pet.find(params[:id])
+    @pet = Pet.find(params[:pet_id])
   end
 
   def new
-    @shelter = Shelter.find(params[:id])
+    @shelter_id = params[:shelter_id]
   end
 
   def create
-    Pet.create(pet_info.merge({:adopted=>false}))
-    redirect_to "/shelters/#{params[:id]}/pets"
+    shelter = Shelter.find(params[:shelter_id])
+    shelter.pets.create(pet_info)
+    redirect_to "/shelters/#{shelter.id}/pets"
   end
 
   def edit
-    @pet = Pet.find(params[:id])
+    @pet = Pet.find(params[:pet_id])
   end
 
   def update
-    pet = Pet.find(params[:id])
-    pet.update(pet_info.merge({:adopted=>false}))
+    pet = Pet.find(params[:pet_id])
+    pet.update(pet_info)
     redirect_to "/pets/#{pet.id}"
   end
 
   def destroy
-    Pet.destroy(params[:id])
+    Pet.destroy(params[:pet_id])
     redirect_to('/pets')
   end
 

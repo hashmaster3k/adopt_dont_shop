@@ -4,11 +4,11 @@ class SheltersController < ApplicationController
   end
 
   def show
-    @shelter = Shelter.find(params[:id])
+    @shelter = Shelter.find(params[:shelter_id])
   end
 
   def show_pets
-    @shelter = Shelter.find(params[:id])
+    @shelter = Shelter.find(params[:shelter_id])
     @pets = @shelter.pets.where(adopted: false)
   end
 
@@ -21,17 +21,17 @@ class SheltersController < ApplicationController
   end
 
   def edit
-    @shelter = Shelter.find(params[:id])
+    @shelter = Shelter.find(params[:shelter_id])
   end
 
   def update
-    shelter = Shelter.find(params[:id])
+    shelter = Shelter.find(params[:shelter_id])
     shelter.update(shelter_info)
     redirect_to "/shelters/#{shelter.id}"
   end
 
   def destroy
-    Shelter.destroy(params[:id])
+    Shelter.destroy(params[:shelter_id])
     redirect_to '/shelters'
   end
 
