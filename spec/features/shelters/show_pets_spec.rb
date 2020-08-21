@@ -48,6 +48,6 @@ RSpec.describe 'shelter show pets' do
 
     visit "/shelters/#{shelter_1.id}/pets"
 
-    expect(page).to have_link('Add new pet to shelter')
+    expect(page).to have_button('Create New Pet')
   end
 end
