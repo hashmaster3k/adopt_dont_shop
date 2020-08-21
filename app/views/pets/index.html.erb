@@ -1,33 +1,25 @@
-# apps/views/pets/index.html.erb
+<article class='all-pets'>
+  <% @pets.each do |pet| %>
+    <section class='pet-box'>
+        <%= link_to "/pets/#{pet.id}" do %>
+          <%= image_tag pet.image, :class => 'pet-image'  %>
+        <% end %>
 
-<h1>All Pets</h1>
+      <div class='pet-info'>
+        <h3><%= link_to pet.name, "/pets/#{pet.id}", :class => 'pet-link' %></h3>
 
-<h2>Click on pet image to get details about pet.</h2>
+        <ul>
+          <li>Age: <%= pet.approx_age %></li>
+          <li>Sex: <%= pet.sex %></li>
+          <% shelter = @shelters.find {|shelter| shelter.id == pet.shelter_id} %>
+          <li>Shelter: <a href="/shelters/<%= shelter.id %>"><%= shelter.name %></a></li>
+        </ul>
+      </div>
 
-<% @pets.each do |pet| %>
-  <div class='pet-box'>
-    <a href='/pets/<%= pet.id %>'><%= image_tag pet.image, :size => "260x180" %></a>
-
-    <h3><%= pet.name %></h3>
-
-    <ul>
-      <li>Age: <%= pet.approx_age %></li>
-      <li>Sex: <%= pet.sex %></li>
-      <% shelter = @shelters.find {|shelter| shelter.id == pet.shelter_id} %>
-      <li>Shelter: <a href="/shelters/<%= shelter.id %>"><%= shelter.name %></a></li>
-    </ul>
-
-    <p>Has <%= pet.name %> been adopted?
-      <form action="/pets/<%= pet.id %>" method="post">
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" value="Remove pet">
-      </form>
-    </p>
-
-  </div>
-  <br>
-<% end %>
-
-
-<a href="/">Return to main page</a>
+      <div class='pet-buttons'>
+        <%= button_to 'Update Pet', "/pets/#{pet.id}/edit", method: :get %>
+        <%= button_to 'Remove Pet', "/pets/#{pet.id}", method: :delete %>
+      </div>
+    </section>
+  <% end %>
+</article>

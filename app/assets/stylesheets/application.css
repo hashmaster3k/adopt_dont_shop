@@ -14,12 +14,190 @@
  *= require_self
  */
 
-.pet-box {
-  border: 3px solid gray;
-  padding: 10px;
-  width: 350px;
+html {
+  font-family: 'Roboto', sans-serif;
 }
 
-/* h3.pet-box {
+header {
+  color: white;
+  padding: 10px;
+  background-color: rgb(24, 210, 141);
+}
+
+body {
+  background-color: #dedede
+}
+
+nav {
+  background-color: rgba(219, 245, 6, .65);
   text-align: center;
-} */
+  padding: 15px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.shelter-box {
+  background-color: #17d28c59;
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.shelter-buttons {
+  display: grid;
+  justify-items: right;
+  align-items: center;
+}
+
+#create-shelter-button {
+  background-color: #17d28c59;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+}
+
+.all-pets {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pet-box {
+  background-color: #17d28c59;
+  padding: 10px;
+  margin: 10px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pet-image {
+  width: 300px;
+  height: 180px;
+}
+
+.pet-link {
+  text-align: center;
+  display: block;
+}
+
+a:link {
+  text-decoration: none;
+  font-weight: bold;
+  color: hotpink;
+}
+
+a:visited {
+  text-decoration: none;
+  font-weight: bold;
+  color: hotpink;
+}
+
+a:hover {
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+}
+
+a:active {
+  text-decoration: none;
+  font-weight: bold;
+  color: hotpink;
+}
+
+.pet-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 10px;
+}
+
+#sarah {
+  height: 250px;
+  width: 300px;
+  float: right;
+  margin: 10px;
+}
+
+#welcome-article {
+  padding: 10px;
+}
+
+.sbid-header {
+  display: flex;
+  justify-content: space-between;
+  margin: 50px;
+  background-color: #17d28c59;
+}
+
+.sbid-header-info {
+  padding-top: 15px;
+  padding-left: 40px;
+  width: 400px;
+}
+
+.sbid-header-info h1 {
+  font-size: 30px;
+}
+.sbid-header-info p {
+  font-size: 25px;
+}
+
+.sbid-links-buttons {
+  display: grid;
+  padding: 30px;
+  align-content: normal;
+  align-items: center;
+  text-align: center;
+}
+
+.page-title {
+  text-align: center;
+}
+
+.create-pet {
+  margin: 20px;
+  text-align: center;
+  padding: 15px;
+  background-color: #a9dbc2;
+}
+
+.pbid-header {
+  display: flex;
+  justify-content: space-between;
+  margin: 50px;
+  background-color: #17d28c59;
+  height: 300px;
+}
+
+.pbid-header-info {
+  padding-bottom: 15px;
+  padding-left: 40px;
+  width: 400px;
+}
+
+.pbid-header-info h1 {
+  font-size: 30px;
+}
+.pbid-header-info p {
+  font-size: 25px;
+}
+
+.pbid-header-image {
+  height: inherit;
+}
+
+.pbid-header-image img{
+  max-height: 100%;
+}
+
+.edit-info {
+  display: flex;
+  justify-content: center;
+}
+
+.edit-info-box {
+  align-text: center;
+  background-color: coral;
+    padding: 50px;
+}

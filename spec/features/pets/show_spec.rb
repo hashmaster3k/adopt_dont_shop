@@ -1,30 +1,29 @@
 # spec/features/pets/show_spec.rb
 
-require 'rails_helper'
+RSpec.describe 'shows individual pet based on :id' do
 
-RSpec.describe 'add new pet to shelter page' do
+  it 'shows individual pet information' do
+    shelter_1 = Shelter.create(name:'Shelter 1',
+                               address:'123 Bradford Rd',
+                               city:'Union City',
+                               state:'CA',
+                               zip:90210)
 
-   it 'fill form, submit and display added pet' do
-     shelter_1 = Shelter.create(name: 'Shelter 1',
-                                address: '123 Bradford Rd',
-                                city: 'Union City',
-                                state: 'CA',
-                                zip: 90210)
 
-    visit "/shelters/#{shelter_1.id}/pets/new"
+    pet_1 = Pet.create(image: 'dog1.jpg',
+                       name: 'Johnny',
+                       approx_age: 3,
+                       sex: 'male',
+                       shelter_id: shelter_1.id)
 
-    fill_in 'pet[name]', with: 'Patti'
-    fill_in 'pet[approx_age]', with: '1'
-    fill_in 'pet[sex]', with: 'female'
-    fill_in 'pet[image]', with: '1.jpg'
-    fill_in 'pet[description]', with: 'Has a heart of gold!'
+    visit "/pets/#{pet_1.id}"
 
-    click_button 'Add pet'
-
-    expect(current_path).to eq("/shelters/#{shelter_1.id}/pets")
-    expect(page).to have_content('Patti')
-    expect(page).to have_content('Age: 1')
-    expect(page).to have_content('Sex: female')
+    expect(page).to have_xpath("//img['#{pet_1.image}']")
+    expect(page).to have_content(pet_1.name)
+    expect(page).to have_content(pet_1.description)
+    expect(page).to have_content("Age: #{pet_1.approx_age}")
+    expect(page).to have_content("Sex: #{pet_1.sex}")
+    expect(page).to have_content("Adoption Status: Ready for adoption!")
   end
 
 end

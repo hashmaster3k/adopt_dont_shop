@@ -1,19 +1,18 @@
-# app/views/shelters/show.html.erb
-
-<h3><%= @shelter.name %></h3>
-
-<p><%= @shelter.address %><br><%= @shelter.city %>, <%= @shelter.state %> <%= @shelter.zip %></p>
-
-<p><a href="/shelters/<%= @shelter.id %>/pets">View adoptable pets from this shelter!</a></p>
-
-<form action="/shelters/<%= @shelter.id %>" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
-  <input type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="delete shelter">
-</form>
-
-<!-- Remove styling of button -->
-<!-- style="background: none!important; border: none; padding: 0!important; text-decoration: underline; cursor: pointer;" -->
-
-<p><a href="/shelters/<%= @shelter.id %>/edit">Update shelter</a> or
-<a href="/shelters">return to all shelters</a></p>
+<article class='sbid'>
+  <section class='sbid-header'>
+    <div class='sbid-header-info'>
+      <div class='sbid-header-info-text'>
+        <h1><%= @shelter.name %></h1>
+        <p><%= @shelter.address %><br><%= @shelter.city %>, <%= @shelter.state %> <%= @shelter.zip %></p>
+      </div>
+    </div>
+    <div class='sbid-links-buttons'>
+      <p><a href="/shelters/<%= @shelter.id %>/pets">View adoptable pets from this shelter!</a></p>
+      <%= button_to 'Update Shelter', "/shelters/#{@shelter.id}/edit", method: :get %>
+      <%= button_to 'Delete Shelter', "/shelters/#{@shelter.id}", method: :delete %>
+    </div>
+    <div class='sbid-header-image'>
+      <%= image_tag  "#{@shelter.image}", :size => '400x250'%>
+    </div>
+  </section>
+</article>

@@ -13,11 +13,11 @@ RSpec.describe 'edit shelter page' do
 
     visit "/shelters/#{shelter_1.id}/edit"
 
-    fill_in 'shelter[name]', with: 'Test Shelter'
-    fill_in 'shelter[address]', with: '1st St.'
-    fill_in 'shelter[city]', with: 'Denver'
-    select 'Colorado', from: 'shelter[state]'
-    fill_in 'shelter[zip]', with: '80102'
+    fill_in :name, with: 'Test Shelter'
+    fill_in :address, with: '1st St.'
+    fill_in :city, with: 'Denver'
+    select 'Colorado', from: :state
+    fill_in :zip, with: '80102'
 
     click_button 'Update Shelter'
 

@@ -29,9 +29,8 @@ RSpec.describe 'shelter show page' do
 
     visit "/shelters/#{shelter_1.id}"
 
-    expect(page).to have_link('Update shelter')
-
-    click_link "Update shelter"
+    expect(page).to have_button('Update Shelter')
+    click_button "Update Shelter"
     expect(current_path).to eq("/shelters/#{shelter_1.id}/edit")
   end
 
@@ -43,11 +42,10 @@ RSpec.describe 'shelter show page' do
                                 zip: 90210)
 
     visit "/shelters/#{shelter_1.id}"
-    expect(page).to have_button('delete shelter')
+    expect(page).to have_button('Delete Shelter')
 
-    click_button "delete shelter"
+    click_button "Delete Shelter"
 
-    expect(Shelter.all.length).to eq(0)
     expect(current_path).to eq('/shelters')
   end
 end
