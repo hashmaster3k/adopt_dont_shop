@@ -1,0 +1,24 @@
+# app/views/pets/edit.html.erb
+
+<h1>Update <%= @pet.name %>'s Information</h1>
+
+<%= form_tag "/pets/#{@pet.id}", method: :patch do %>
+  <%= label_tag 'Pet Name:' %><br>
+  <%= text_field_tag :name, @pet.name %><br><br>
+
+  <%= label_tag 'Approxamite age:' %><br>
+  <%= text_field_tag :approx_age, @pet.approx_age %><br><br>
+
+  <%= label_tag 'Sex:' %>  <br>
+  <%= text_field_tag :sex, @pet.sex %><br><br>
+
+  <%= label_tag 'Image:' %><br>
+  <%= text_field_tag :image, @pet.image %><br><br>
+
+  <%= label_tag 'Description:' %><br>
+  <%= text_area_tag :description, @pet.description, size:'16x5' %><br><br>
+
+  <%= hidden_field_tag :shelter_id, @pet.shelter_id %>
+
+  <%= submit_tag 'Update Info' %>
+<% end %>
