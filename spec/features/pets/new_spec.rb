@@ -19,8 +19,8 @@ RSpec.describe 'add new pet to shelter page' do
     fill_in :image, with: '1.jpg'
     fill_in :description, with: 'Has a heart of gold!'
 
-    click_button 'Add pet'
-
+    click_button 'Add Pet'
+    
     expect(current_path).to eq("/shelters/#{shelter_1.id}/pets")
     expect(page).to have_content('Patti')
     expect(page).to have_content('Age: 1')

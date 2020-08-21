@@ -23,7 +23,7 @@ class PetsController < ApplicationController
 
   def update
     pet = Pet.find(params[:id])
-    pet.update(pet_info)
+    pet.update(pet_info.merge({:adopted=>false}))
     redirect_to "/pets/#{pet.id}"
   end
 
@@ -34,7 +34,6 @@ class PetsController < ApplicationController
 
   private
   def pet_info
-    params[:shelter_id] = params[:id].to_i
     params.permit(:name,
                   :approx_age,
                   :sex,
