@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
 html {
   font-family: 'Roboto', sans-serif;
 }
@@ -35,60 +36,12 @@ nav {
   justify-content: space-around;
 }
 
-a:link.nav-link {
-  text-decoration: none;
-  font-weight: bold;
-  color: rgb(24, 210, 141);
-}
-
-a:visited.nav-link {
-  text-decoration: none;
-  font-weight: bold;
-  color: rgb(24, 210, 141);
-}
-
-a:hover.nav-link {
-  text-decoration: none;
-  font-weight: bold;
-  color: hotpink;
-}
-
-a:active.nav-link {
-  text-decoration: none;
-  font-weight: bold;
-  color: rgb(219, 245, 6);
-}
-
 .shelter-box {
   background-color: #17d28c59;
   padding: 10px;
   margin: 10px;
   display: flex;
   justify-content: space-between;
-}
-
-a:link.shelter-header {
-  text-decoration: none;
-  font-weight: bold;
-  color: hotpink;
-}
-
-a:visited.shelter-header {
-  text-decoration: none;
-  font-weight: bold;
-  color: hotpink;
-}
-
-a:hover.shelter-header {
-  text-decoration: none;
-  font-weight: bold;
-  color: white;
-}
-
-a:active.shelter-header {
-  text-decoration: none;
-  font-weight: bold;
-  color: hotpink;
 }
 
 .shelter-buttons {
@@ -124,29 +77,30 @@ a:active.shelter-header {
   height: 180px;
 }
 
-a.pet-link {
+.pet-link {
   text-align: center;
+  display: block;
 }
 
-a:link.pet-link {
+a:link {
   text-decoration: none;
   font-weight: bold;
   color: hotpink;
 }
 
-a:visited.pet-link {
+a:visited {
   text-decoration: none;
   font-weight: bold;
   color: hotpink;
 }
 
-a:hover.pet-link {
+a:hover {
   text-decoration: none;
   font-weight: bold;
   color: white;
 }
 
-a:active.pet-link {
+a:active {
   text-decoration: none;
   font-weight: bold;
   color: hotpink;
@@ -155,6 +109,7 @@ a:active.pet-link {
 .pet-buttons {
   display: flex;
   justify-content: space-evenly;
+  margin: 10px;
 }
 
 #sarah {
@@ -166,4 +121,32 @@ a:active.pet-link {
 
 #welcome-article {
   padding: 10px;
+}
+
+.sbid-header {
+  display: flex;
+  justify-content: space-between;
+  margin: 50px;
+  background-color: #17d28c59;
+}
+
+.sbid-header-info {
+  padding-top: 15px;
+  padding-left: 40px;
+  width: 400px;
+}
+
+.sbid-header-info h1 {
+  font-size: 30px;
+}
+.sbid-header-info p {
+  font-size: 25px;
+}
+
+.sbid-links-buttons {
+  display: grid;
+  padding: 30px;
+  align-content: normal;
+  align-items: center;
+  text-align: center;
 }

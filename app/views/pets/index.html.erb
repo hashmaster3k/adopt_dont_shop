@@ -1,33 +1,25 @@
-# apps/views/pets/index.html.erb
-
-<h1>All Pets</h1>
-
-<h2>Click on pet image to get details about pet.</h2>
-
 <article class='all-pets'>
-<% @pets.each do |pet| %>
-  <section class='pet-box'>
-      <%= link_to "/pets/#{pet.id}" do %>
-        <%= image_tag pet.image, :class => 'pet-image'  %>
-      <% end %>
-    <div class='pet-info'>
-      <h3><%= pet.name %></h3>
+  <% @pets.each do |pet| %>
+    <section class='pet-box'>
+        <%= link_to "/pets/#{pet.id}" do %>
+          <%= image_tag pet.image, :class => 'pet-image'  %>
+        <% end %>
 
-      <ul>
-        <li>Age: <%= pet.approx_age %></li>
-        <li>Sex: <%= pet.sex %></li>
-        <% shelter = @shelters.find {|shelter| shelter.id == pet.shelter_id} %>
-        <li>Shelter: <a href="/shelters/<%= shelter.id %>"><%= shelter.name %></a></li>
-      </ul>
-    </div>
-    <div class='pet-buttons'>
-      <%= button_to 'Update Pet', "/pets/#{pet.id}/edit", method: :get %>
-      <%= button_to 'Remove Pet', "/pets/#{pet.id}", method: :delete %>
-    </div>
-  </section>
-  <br>
-<% end %>
+      <div class='pet-info'>
+        <h3><%= link_to pet.name, "/pets/#{pet.id}", :class => 'pet-link' %></h3>
+
+        <ul>
+          <li>Age: <%= pet.approx_age %></li>
+          <li>Sex: <%= pet.sex %></li>
+          <% shelter = @shelters.find {|shelter| shelter.id == pet.shelter_id} %>
+          <li>Shelter: <a href="/shelters/<%= shelter.id %>"><%= shelter.name %></a></li>
+        </ul>
+      </div>
+
+      <div class='pet-buttons'>
+        <%= button_to 'Update Pet', "/pets/#{pet.id}/edit", method: :get %>
+        <%= button_to 'Remove Pet', "/pets/#{pet.id}", method: :delete %>
+      </div>
+    </section>
+  <% end %>
 </article>
-
-
-<a href="/">Return to main page</a>
