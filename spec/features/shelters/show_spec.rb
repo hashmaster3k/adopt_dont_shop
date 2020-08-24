@@ -48,4 +48,18 @@ RSpec.describe 'shelter show page' do
 
     expect(current_path).to eq('/shelters')
   end
+  it "shows its list of reviews" do
+    shelter_1 = Shelter.create(name: 'Shelter 1',
+                                address: '123 Bradford Rd',
+                                city: 'Union City',
+                                state: 'CA',
+                                zip: 90210)
+
+    visit "/shelters/#{shelter_1.id}"
+
+    expect(page).to have_content("The Best Shelter!")
+    expect(page).to have_content("5 Stars")
+    expect(page).to have_content("The staff were super nice and the proccess was easy!")
+    
+  end
 end

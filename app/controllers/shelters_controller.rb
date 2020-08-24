@@ -4,6 +4,7 @@ class SheltersController < ApplicationController
   end
 
   def show
+    binding.pry
     @shelter = Shelter.find(params[:shelter_id])
   end
 
