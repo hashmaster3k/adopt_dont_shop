@@ -23,10 +23,10 @@
             <%= review.title %> | Rating: <%= review.rating %> stars
             <br><br>
             "<%= review.content %>"
+            <%= button_to 'Edit', "/reviews/#{review.id}/edit", method: :get %>
             <br><br>
             <hr>
             <br>
-            <%= button_to 'Edit', "/reviews/#{review.id}/edit", method: :get %>
           </div>
 
         <% end %>

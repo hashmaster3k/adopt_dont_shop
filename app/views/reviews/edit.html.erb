@@ -8,7 +8,7 @@
 </div>
 <article class="edit-info">
   <section class='edit-info-box'>
-    <%= form_tag "/shelters/#{@shelter_id}/reviews", method: :patch do%>
+    <%= form_tag "/reviews/#{@review.id}", method: :patch do%>
       <%= label_tag 'Title:' %><br>
       <%= text_field_tag :title, @review.title %><br><br>
 

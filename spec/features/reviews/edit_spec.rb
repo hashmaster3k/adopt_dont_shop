@@ -35,8 +35,8 @@ RSpec.describe 'edit review' do
     visit "/reviews/#{review_1.id}/edit"
 
     fill_in :title, with: "Bad Job"
-    fill_in :title, with: "1 star"
-    fill_in :title, with: "They lost my dog"
+    fill_in :rating, with: "1 star"
+    fill_in :content, with: "They lost my dog"
 
     click_button "Edit Review"
 
