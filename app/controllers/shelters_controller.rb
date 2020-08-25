@@ -8,11 +8,6 @@ class SheltersController < ApplicationController
     @reviews = @shelter.reviews
   end
 
-  def show_pets
-    @shelter = Shelter.find(params[:shelter_id])
-    @pets = @shelter.pets.where(adopted: false)
-  end
-
   def new
   end
 

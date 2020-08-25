@@ -209,7 +209,6 @@ a:active {
   margin: 50px;
   background-color: #17d28c59;
   padding: 35px;
-  height: 300px;
 }
 
 .reviews-box h1 {
@@ -223,4 +222,8 @@ a:active {
 .review-link {
   display: flex;
   justify-content: center;
+}
+
+hr {
+  border: 3px solid #dced6f;
 }
