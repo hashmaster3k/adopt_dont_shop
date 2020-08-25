@@ -1,5 +1,7 @@
 # spec/features/pets/show_spec.rb
 
+require 'rails_helper'
+
 RSpec.describe 'shows individual pet based on :id' do
 
   it 'shows individual pet information' do
@@ -20,7 +22,6 @@ RSpec.describe 'shows individual pet based on :id' do
 
     expect(page).to have_xpath("//img['#{pet_1.image}']")
     expect(page).to have_content(pet_1.name)
-    expect(page).to have_content(pet_1.description)
     expect(page).to have_content("Age: #{pet_1.approx_age}")
     expect(page).to have_content("Sex: #{pet_1.sex}")
     expect(page).to have_content("Adoption Status: Ready for adoption!")
