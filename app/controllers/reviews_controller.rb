@@ -13,10 +13,10 @@ class ReviewsController < ApplicationController
       flash[:notice] = "One or more fields missing content."
       render :new
     end
+  end
 
-    # shelter = Shelter.find(params[:shelter_id])
-    # shelter.reviews.create(review_params)
-    # redirect_to "/shelters/#{shelter.id}"
+  def edit
+    @review = Review.find(params[:review_id])
   end
 
   private
