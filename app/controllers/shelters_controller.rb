@@ -5,7 +5,7 @@ class SheltersController < ApplicationController
 
   def show
     @shelter = Shelter.find(params[:shelter_id])
-    @reviews = Review.find{|review| review.shelter_id == @shelter.id}
+    @reviews = @shelter.reviews
   end
 
   def show_pets

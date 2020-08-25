@@ -202,8 +202,9 @@ a:active {
     padding: 50px;
 }
 
-.reviews {
-  display: grid;
+.reviews-box {
+  display: table;
+  width: -webkit-fill-available;
   justify-content: center;
   margin: 50px;
   background-color: #17d28c59;
@@ -211,6 +212,15 @@ a:active {
   height: 300px;
 }
 
-.review-header {
-  
+.reviews-box h1 {
+  text-align: center;
+}
+
+.review {
+  margin: 15px;
+}
+
+.review-link {
+  display: flex;
+  justify-content: center;
 }

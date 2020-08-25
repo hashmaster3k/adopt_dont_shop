@@ -15,19 +15,22 @@
       <%= image_tag  "#{@shelter.image}", :size => '400x250'%>
     </div>
   </section>
-  <section class="reviews">
-    <div class='review-info'>
+  <section class="reviews-box">
+    <h1>Reviews</h1>
       <% if @reviews != nil %>
-        <%= @reviews.title %>
-        <br>
-        <%= @reviews.rating %>
-        <br>
-        <%= @reviews.content %>
-      <% else %>
-        No reviews
+        <% @reviews.each do |review| %>
+          <div class='review'>
+            <%= review.title %> | Rating: <%= review.rating %> stars
+            <br><br>
+            "<%= review.content %>"
+            <br><br>
+            <hr>
+            <br>
+          </div>
+
+        <% end %>
       <% end %>
-    </div>
-    <div class='review-button'>
+    <div class='review-link'>
       <%= link_to 'CREATE NEW REVIEW', "/shelters/#{@shelter.id}/reviews/new" %>
     </div>
   </section>

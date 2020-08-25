@@ -1,5 +1,7 @@
 # spec/features/reviews/new_spec.rb
 
+require 'rails_helper'
+
 RSpec.describe 'create new review' do
   it 'can fill form and create a new review' do
     shelter_1 = Shelter.create!(name: 'Shelter 1',
