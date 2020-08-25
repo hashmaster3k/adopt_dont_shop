@@ -55,11 +55,13 @@ RSpec.describe 'shelter show page' do
                                 state: 'CA',
                                 zip: 90210)
 
+    review_1 = Review.create(shelter_id: shelter_1.id, title: "The Best Shelter!", rating: "5 Stars", content: "The staff were super nice and the proccess was easy!")
+
     visit "/shelters/#{shelter_1.id}"
 
-    expect(page).to have_content("The Best Shelter!")
-    expect(page).to have_content("5 Stars")
-    expect(page).to have_content("The staff were super nice and the proccess was easy!")
-    
+    expect(page).to have_content(review_1.title)
+    expect(page).to have_content(review_1.rating)
+    expect(page).to have_content(review_1.content)
+
   end
 end

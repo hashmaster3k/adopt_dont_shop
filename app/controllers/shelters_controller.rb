@@ -4,8 +4,8 @@ class SheltersController < ApplicationController
   end
 
   def show
-    binding.pry
     @shelter = Shelter.find(params[:shelter_id])
+    @reviews = Review.find{|review| review.shelter_id == @shelter.id}
   end
 
   def show_pets

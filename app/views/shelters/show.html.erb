@@ -15,4 +15,16 @@
       <%= image_tag  "#{@shelter.image}", :size => '400x250'%>
     </div>
   </section>
+  <section class="reviews">
+    <% if @reviews != nil %>
+    <%= @reviews.title %>
+    <br>
+    <%= @reviews.rating %>
+    <br>
+    <%= @reviews.content %>
+    <% else %>
+      No reviews
+    <% end %>
+  </section>
+
 </article>
