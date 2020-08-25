@@ -20,10 +20,11 @@
       <% if @reviews != nil %>
         <% @reviews.each do |review| %>
           <div class='review'>
-            <%= review.title %> | Rating: <%= review.rating %> stars
+            <%= review.title %> | Rating: <%= review.rating %> star
             <br><br>
             "<%= review.content %>"
             <%= button_to 'Edit', "/reviews/#{review.id}/edit", method: :get %>
+            <%= button_to 'Delete Review', "/reviews/#{review.id}", method: :delete %>
             <br><br>
             <hr>
             <br>

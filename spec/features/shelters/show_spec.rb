@@ -83,4 +83,33 @@ RSpec.describe 'shelter show page' do
 
     expect(current_path).to eq("/shelters/#{shelter_1.id}/reviews/new")
   end
+
+  it "has a link and can delete a review" do
+
+    shelter_1 = Shelter.create(name: 'Shelter 1',
+                                address: '123 Bradford Rd',
+                                city: 'Union City',
+                                state: 'CA',
+                                zip: 90210)
+
+    shelter_1.reviews.create!(title: 'Boooooooo',
+                              rating: 1,
+                              content: 'My pet got sick from this place')
+
+    visit "/shelters/#{shelter_1.id}"
+
+    expect(page).to have_content('Boooooooo')
+    expect(page).to have_content('Rating: 1 star')
+    expect(page).to have_content('My pet got sick from this place')
+
+    expect(page).to have_button('Delete Review')
+
+    click_button 'Delete Review'
+
+    expect(page).to_not have_content('Boooooooo')
+    expect(page).to_not have_content('Rating: 1 star')
+    expect(page).to_not have_content('My pet got sick from this place')
+
+
+  end
 end
