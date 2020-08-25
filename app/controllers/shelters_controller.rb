@@ -5,11 +5,7 @@ class SheltersController < ApplicationController
 
   def show
     @shelter = Shelter.find(params[:shelter_id])
-  end
-
-  def show_pets
-    @shelter = Shelter.find(params[:shelter_id])
-    @pets = @shelter.pets.where(adopted: false)
+    @reviews = @shelter.reviews
   end
 
   def new

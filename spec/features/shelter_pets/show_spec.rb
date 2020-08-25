@@ -1,4 +1,4 @@
-# spec/features/shelters/show_pets_spec.rb
+# spec/features/shelter_pets/show_pets_spec.rb
 
 require 'rails_helper'
 

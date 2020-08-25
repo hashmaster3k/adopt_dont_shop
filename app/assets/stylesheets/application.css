@@ -201,3 +201,41 @@ a:active {
   background-color: coral;
     padding: 50px;
 }
+
+.reviews-box {
+  display: table;
+  width: -webkit-fill-available;
+  justify-content: center;
+  margin: 50px;
+  background-color: #17d28c59;
+  padding: 35px;
+}
+
+.reviews-box h1 {
+  text-align: center;
+}
+
+.review {
+  margin: 15px;
+}
+
+.review-link {
+  display: flex;
+  justify-content: center;
+}
+
+hr {
+  border: 3px solid #dced6f;
+  margin-bottom: 25px;
+}
+
+.flash-notice {
+  text-align:center;
+  color: red;
+}
+
+.review-buttons {
+  padding: 25px;
+  display: flex;
+  justify-content: space-evenly;
+}

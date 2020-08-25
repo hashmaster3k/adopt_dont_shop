@@ -15,4 +15,26 @@
       <%= image_tag  "#{@shelter.image}", :size => '400x250'%>
     </div>
   </section>
+  <section class="reviews-box">
+    <h1>Reviews</h1>
+      <% if @reviews != nil %>
+        <% @reviews.each do |review| %>
+          <div class='review'>
+            <%= review.title %> | Rating: <%= review.rating %> star
+            <br><br>
+            "<%= review.content %>"
+            <br><br>
+          </div>
+          <div class="review-buttons">
+            <%= button_to 'Edit Review', "/reviews/#{review.id}/edit", method: :get %>
+            <%= button_to 'Delete Review', "/reviews/#{review.id}", method: :delete %>
+          </div>
+          <hr>
+        <% end %>
+      <% end %>
+    <div class='review-link'>
+      <%= link_to 'CREATE NEW REVIEW', "/shelters/#{@shelter.id}/reviews/new" %>
+    </div>
+  </section>
+
 </article>
