@@ -16,15 +16,20 @@
     </div>
   </section>
   <section class="reviews">
-    <% if @reviews != nil %>
-    <%= @reviews.title %>
-    <br>
-    <%= @reviews.rating %>
-    <br>
-    <%= @reviews.content %>
-    <% else %>
-      No reviews
-    <% end %>
+    <div class='review-info'>
+      <% if @reviews != nil %>
+        <%= @reviews.title %>
+        <br>
+        <%= @reviews.rating %>
+        <br>
+        <%= @reviews.content %>
+      <% else %>
+        No reviews
+      <% end %>
+    </div>
+    <div class='review-button'>
+      <%= link_to 'CREATE NEW REVIEW', "/shelters/#{@shelter.id}/reviews/new" %>
+    </div>
   </section>
 
 </article>

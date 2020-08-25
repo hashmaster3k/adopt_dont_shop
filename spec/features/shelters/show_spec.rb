@@ -48,6 +48,7 @@ RSpec.describe 'shelter show page' do
 
     expect(current_path).to eq('/shelters')
   end
+
   it "shows its list of reviews" do
     shelter_1 = Shelter.create(name: 'Shelter 1',
                                 address: '123 Bradford Rd',
@@ -55,13 +56,31 @@ RSpec.describe 'shelter show page' do
                                 state: 'CA',
                                 zip: 90210)
 
-    review_1 = Review.create(shelter_id: shelter_1.id, title: "The Best Shelter!", rating: "5 Stars", content: "The staff were super nice and the proccess was easy!")
+    review_1 = Review.create(shelter_id: shelter_1.id,
+                              title: "The Best Shelter!",
+                              rating: "5 Stars",
+                              content: "The staff were super nice and the proccess was easy!")
 
     visit "/shelters/#{shelter_1.id}"
 
     expect(page).to have_content(review_1.title)
     expect(page).to have_content(review_1.rating)
     expect(page).to have_content(review_1.content)
+  end
 
+  it 'should have a link to create a review' do
+    shelter_1 = Shelter.create(name: 'Shelter 1',
+                                address: '123 Bradford Rd',
+                                city: 'Union City',
+                                state: 'CA',
+                                zip: 90210)
+
+    visit "/shelters/#{shelter_1.id}"
+
+    expect(page).to have_link('CREATE NEW REVIEW')
+
+    click_link 'CREATE NEW REVIEW'
+
+    expect(current_path).to eq("/shelters/#{shelter_1.id}/reviews/new")
   end
 end

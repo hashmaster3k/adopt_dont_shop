@@ -201,3 +201,16 @@ a:active {
   background-color: coral;
     padding: 50px;
 }
+
+.reviews {
+  display: grid;
+  justify-content: center;
+  margin: 50px;
+  background-color: #17d28c59;
+  padding: 35px;
+  height: 300px;
+}
+
+.review-header {
+  
+}
