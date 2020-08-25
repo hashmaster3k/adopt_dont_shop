@@ -16,7 +16,7 @@ RSpec.describe 'edit review' do
 
     visit "/shelters/#{shelter_1.id}"
 
-    expect(page).to have_button("Edit")
+    expect(page).to have_button("Edit Review")
   end
 
  it "can edit a review" do

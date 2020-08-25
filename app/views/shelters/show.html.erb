@@ -23,13 +23,13 @@
             <%= review.title %> | Rating: <%= review.rating %> star
             <br><br>
             "<%= review.content %>"
-            <%= button_to 'Edit', "/reviews/#{review.id}/edit", method: :get %>
-            <%= button_to 'Delete Review', "/reviews/#{review.id}", method: :delete %>
             <br><br>
-            <hr>
-            <br>
           </div>
-
+          <div class="review-buttons">
+            <%= button_to 'Edit Review', "/reviews/#{review.id}/edit", method: :get %>
+            <%= button_to 'Delete Review', "/reviews/#{review.id}", method: :delete %>
+          </div>
+          <hr>
         <% end %>
       <% end %>
     <div class='review-link'>
