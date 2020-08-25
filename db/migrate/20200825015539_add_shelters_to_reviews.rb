@@ -1,5 +1,5 @@
 class AddSheltersToReviews < ActiveRecord::Migration[5.2]
   def change
-    add_column :reviews, :shelter_id, :integer
+    add_reference :reviews, :shelter, foreign_key: true
   end
 end
