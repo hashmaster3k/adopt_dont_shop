@@ -227,3 +227,8 @@ a:active {
 hr {
   border: 3px solid #dced6f;
 }
+
+.flash-notice {
+  text-align:center;
+  color: red;
+}

@@ -24,6 +24,21 @@ RSpec.describe 'create new review' do
     expect(page).to have_content('Best Service Ever')
     expect(page).to have_content('5 Stars!')
     expect(page).to have_content('They really care!')
+  end
 
+  it 'must have all form fields filled in' do
+    shelter_1 = Shelter.create!(name: 'Shelter 1',
+                               address: '123 Bradford Rd',
+                               city: 'Union City',
+                               state: 'CA',
+                               zip: 90210,
+                               image: 'building_1.jpg')
+
+    visit "/shelters/#{shelter_1.id}/reviews/new"
+
+    click_on 'Create Review'
+
+    expect(page).to have_content('One or more fields missing content.')
+    expect(page).to have_button('Create Review')
   end
 end
