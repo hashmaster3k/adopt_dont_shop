@@ -40,4 +40,5 @@
      click_link 'PETS', visible: false
      expect(page).to have_link('FAVORITE PETS:', visible: false)
    end
+
  end
