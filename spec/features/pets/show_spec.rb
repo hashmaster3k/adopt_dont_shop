@@ -27,4 +27,31 @@ RSpec.describe 'shows individual pet based on :id' do
     expect(page).to have_content("Adoption Status: Ready for adoption!")
   end
 
+  it "Has a button to favorite pet" do
+    shelter_1 = Shelter.create(name:'Shelter 1',
+                               address:'123 Bradford Rd',
+                               city:'Union City',
+                               state:'CA',
+                               zip:90210)
+
+
+    pet_1 = Pet.create(image: 'dog1.jpg',
+                       name: 'Johnny',
+                       approx_age: 3,
+                       sex: 'male',
+                       shelter_id: shelter_1.id)
+
+    visit "/pets/#{pet_1.id}"
+
+    expect(page).to have_button("Favorite")
+
+    click_button("Favorite")
+
+    expect(current_path).to eq "/pets/#{pet_1.id}"
+    expect(page).to have_content("This Pet has been Added to your Favorites")
+
+end
+
+
+
 end

@@ -12,7 +12,9 @@
                                 <% else %>
                                 <%= "Gone to a great home!" %>
                                 <% end %></li>
-        </ul>      </div>
+        </ul>
+        <%= button_to "Favorite", "/favorites/#{@pet.id}",  method: :post %>
+       </div>
     </div>
     <div class='pbid-header-image'>
       <%= image_tag  "#{@pet.image}"%>
