@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
     if review.save
       redirect_to "/shelters/#{shelter.id}"
     else
-      flash[:notice] = "One or more fields missing content."
+      flash.now[:notice] = "One or more fields missing content."
       render :new
     end
   end
@@ -25,7 +25,7 @@ class ReviewsController < ApplicationController
     if review.update(review_params)
       redirect_to "/shelters/#{review.shelter_id}"
     else
-      flash[:notice] = "One or more fields missing content."
+      flash.discard[:notice] = "One or more fields missing content."
       redirect_to "/reviews/#{review.id}/edit"
     end
   end
