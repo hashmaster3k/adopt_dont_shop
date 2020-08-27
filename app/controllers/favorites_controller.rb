@@ -1,7 +1,7 @@
 class FavoritesController < ApplicationController
 
   def index
-    @pets = Pet.find(Favorite.pluck(:pet_id))
+    @pets = Favorite.find_by_id
   end
 
   def create
