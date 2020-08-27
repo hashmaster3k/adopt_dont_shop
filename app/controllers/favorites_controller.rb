@@ -5,7 +5,6 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    binding.pry
     favorite = Favorite.where(pet_id: params[:pet_id]).first
     Favorite.destroy(favorite.id)
     redirect_to '/favorites'
