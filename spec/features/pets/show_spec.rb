@@ -43,9 +43,9 @@ RSpec.describe 'shows individual pet based on :id' do
 
     visit "/pets/#{pet_1.id}"
 
-    expect(page).to have_button("Favorite")
+    expect(page).to have_button("ADD PET TO FAVORITES")
 
-    click_button("Favorite")
+    click_button("ADD PET TO FAVORITES")
 
     expect(current_path).to eq "/pets/#{pet_1.id}"
     expect(page).to have_content("This Pet has been Added to your Favorites")

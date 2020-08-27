@@ -38,6 +38,8 @@ RSpec.describe 'index favorites page' do
 
     expect(page).to have_content(pet_1.name)
     expect(page).to have_content(pet_2.name)
+
+    visit "/pets/#{pet_1.id}"
   end
 
 end

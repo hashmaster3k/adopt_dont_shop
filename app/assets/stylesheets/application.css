@@ -174,13 +174,34 @@ a:active {
   padding-bottom: 15px;
   padding-left: 40px;
   width: 400px;
+  inline-size: -webkit-fill-available;
 }
 
 .pbid-header-info h1 {
   font-size: 30px;
+  display: inline-flex;
+  margin-bottom: 0;
 }
 .pbid-header-info p {
-  font-size: 25px;
+  font-size: 18px;
+}
+
+.pbid-header-info form {
+  display: grid;
+  padding-right: 30px;
+  padding-top: 20px;
+}
+
+.fav-button {
+  background-color: #dced6f;
+  padding: 5px;
+  border: none;
+  color: hotpink;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.5s;
 }
 
 .pbid-header-image {
@@ -188,7 +209,7 @@ a:active {
 }
 
 .pbid-header-image img{
-  max-height: 100%;
+  height: inherit;
 }
 
 .edit-info {
