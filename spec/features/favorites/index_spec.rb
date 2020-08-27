@@ -24,8 +24,8 @@ RSpec.describe 'index favorites page' do
                        sex: 'female',
                        shelter_id: shelter_1.id)
 
-    Favorite.create(pet_id: @pet_1.id)
-    Favorite.create(pet_id: @pet_2.id)
+    @fav_1 = Favorite.create(pet_id: @pet_1.id)
+    @fav_2 = Favorite.create(pet_id: @pet_2.id)
   end
 
   it 'has link to favorites page and can visit it' do
@@ -45,7 +45,22 @@ RSpec.describe 'index favorites page' do
   end
 
   it 'displays message when no favorites added' do
+    Favorite.destroy(@fav_1.id)
+    Favorite.destroy(@fav_2.id)
     visit '/favorites'
+
+    expect(page).to have_content('No favorited pets :( Please add some!')
+  end
+
+  it 'can remove all pets at once' do
+    visit '/favorites'
+
+    expect(page).to have_content(@pet_1.name)
+    expect(page).to have_content(@pet_2.name)
+
+    within '.remove-all-favs' do
+      click_button('REMOVE ALL PETS FROM FAVORITES')
+    end
 
     expect(page).to have_content('No favorited pets :( Please add some!')
   end

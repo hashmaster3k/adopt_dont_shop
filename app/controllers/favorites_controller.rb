@@ -5,9 +5,14 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    favorite = Favorite.where(pet_id: params[:pet_id]).first
-    Favorite.destroy(favorite.id)
-    redirect_to '/favorites'
+    if params[:pet_id] == 'all'
+      Favorite.delete_all
+      redirect_to '/favorites'
+    else
+      favorite = Favorite.where(pet_id: params[:pet_id]).first
+      Favorite.destroy(favorite.id)
+      redirect_to '/favorites'
+    end
   end
 
   def create

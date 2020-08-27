@@ -1,19 +1,30 @@
-<article class='all-pets'>
-  <% if Favorite.count > 0 %>
-    <% @pets.each do |pet| %>
-      <section class='pet-box'>
+<% if Favorite.count > 0 %>
+  <article class='all-favs'>
+    <section class='all-pets'>
+      <% @pets.each do |pet| %>
+
+       <div class='pet-box'>
           <%= link_to "/pets/#{pet.id}" do %>
             <%= image_tag pet.image, :class => 'pet-image'  %>
           <% end %>
-        <div class='pet-info'>
-          <h3><%= link_to pet.name, "/pets/#{pet.id}", :class => 'pet-link' %></h3>
+
+
+          <div class='pet-info'>
+            <h3><%= link_to pet.name, "/pets/#{pet.id}", :class => 'pet-link' %></h3>
+          </div>
+
+          <div class="pet-buttons-<%=pet.id%>">
+            <%=  button_to "REMOVE PET FROM FAVORITES", "/favorites/#{pet.id}",  method: :delete, :class => 'fav-button' %>
+          </div>
         </div>
-        <div class="pet-buttons-<%=pet.id%>">
-          <%=  button_to "REMOVE PET FROM FAVORITES", "/favorites/#{pet.id}",  method: :delete, :class => 'fav-button' %>
-        </div>
-      </section>
-    <% end %>
-  <% else %>
-    <p>No favorited pets :( Please add some!</p>
-  <% end %>
-</article>
+      <% end %>
+    </section>
+
+    <section class='remove-all-favs'>
+      <%= button_to 'REMOVE ALL PETS FROM FAVORITES', "/favorites/all", method: :delete %>
+    </section>
+  </article>
+
+<% else %>
+  <p id='missing-favs'>No favorited pets :( Please add some!</p>
+<% end %>
