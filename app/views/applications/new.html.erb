@@ -1,0 +1,66 @@
+<div class='page-title'>
+  <h1>Adoption Form</h1>
+</div>
+<article class="edit-info">
+  <section class='edit-info-box'>
+    <%= form_tag "/applications" do %>
+
+      <%= label_tag "Choose what pets you'd like to adopt:" %>
+      <% @favorites.each do |fav| %><br>
+        <br>
+
+        <%= check_box_tag fav.name, fav.id, :id => "pet-#{fav.id}" %>
+        <%= label_tag fav.name %>
+        <br>
+      <% end %><br>
+
+      <%= label_tag 'Your Name:' %><br>
+      <%= text_field_tag :name %><br><br>
+
+      <%= label_tag 'Your Address:' %><br>
+      <%= text_field_tag :address %><br><br>
+
+      <%= label_tag 'Your City:' %>  <br>
+      <%= text_field_tag :city %><br><br>
+
+      <%= label_tag 'Your State:' %><br>
+      <%= select_tag(:state, options_for_select([['Alabama', 'AL'], ['Alaska', 'AK'],
+                                                ['Arizona', 'AZ'], ['Arkansas', 'AR'],
+                                                ['California', 'CA'], ['Colorado', 'CO'],
+                                                ['Connecticut', 'CT'], ['Delaware', 'DE'],
+                                                ['Florida', 'FL'], ['Georgia', 'GE'],
+                                                ['Hawaii', 'HI'], ['Idaho', 'ID'],
+                                                ['Illinois', 'IL'], ['Indiana', 'IN'],
+                                                ['Iowa', 'IW' ], ['Kansas', 'KS'],
+                                                ['Kentucky', 'KY'], ['Louisiana', 'LA'],
+                                                ['Maine', 'ME'], ['Maryland', 'MD'],
+                                                ['Massachusetts', 'MA'], ['Michigan', 'MI'],
+                                                ['Minnesota', 'MN'], ['Mississippi', 'MS'],
+                                                ['Missouri', 'MO'], ['Montana', 'MT'],
+                                                ['Nebraska', 'NE'], ['Nevada', 'NV'],
+                                                ['New Hampshire', 'NH'], ['New Jersey', 'NJ'],
+                                                ['New Mexico', 'NM'], ['New York', 'NY'],
+                                                ['North Carolina', 'NC'], ['North Dakota', 'ND'],
+                                                ['Ohio', 'OH'], ['Oklahoma', 'OK'],
+                                                ['Oregon', 'OR'], ['Pennsylvania', 'PA'],
+                                                ['Rhode Island', 'RI'], ['South Carolina', 'SC'],
+                                                ['South Dakota', 'SD'], ['Tennessee', 'TN'],
+                                                ['Texas', 'TX'], ['Utah', 'UT'],
+                                                ['Vermont', 'VT'], ['Virginia', 'VA'],
+                                                ['Washington', 'WA'], ['West Virginia', 'WV'],
+                                                ['Wisconsin', 'WI'], ['Wyoming', 'WY']])) %><br><br>
+
+
+      <%= label_tag 'Your Zip Code:' %><br>
+      <%= text_field_tag :zip,  nil, maxlength: 5 %><br><br>
+
+      <%= label_tag 'Your Phone Number:' %>  <br>
+      <%= text_field_tag :phone_num %><br><br>
+
+      <%= label_tag 'Description:' %>  <br>
+      <%= text_field_tag :description %><br><br>
+
+      <%= submit_tag 'Adopt!' %>
+    <% end %>
+  </section>
+</article>

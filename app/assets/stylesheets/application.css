@@ -78,6 +78,12 @@ nav {
   flex-direction: column;
 }
 
+.adopt-process-button {
+  margin: 15px;
+  padding: 15px;
+  background-color: #a9dbc2;
+}
+
 .remove-all-favs {
   margin: 15px;
   padding: 15px;
