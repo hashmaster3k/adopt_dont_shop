@@ -6,14 +6,9 @@
         <% end %>
       <div class='pet-info'>
         <h3><%= link_to pet.name, "/pets/#{pet.id}", :class => 'pet-link' %></h3>
-        <ul>
-          <li>Age: <%= pet.approx_age %></li>
-          <li>Sex: <%= pet.sex %></li>
-        </ul>
       </div>
-
-      <div class='pet-buttons'>
-
+      <div class="pet-buttons-<%=pet.id%>">
+        <%=  button_to "REMOVE PET FROM FAVORITES", "/favorites/#{pet.id}",  method: :delete, :class => 'fav-button' %>
       </div>
     </section>
   <% end %>
