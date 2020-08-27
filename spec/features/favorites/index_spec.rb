@@ -31,8 +31,8 @@ RSpec.describe 'index favorites page' do
                        sex: 'female',
                        shelter_id: shelter_1.id)
 
-    fav_1 = Favorite.create(pet_id: pet_1.id)
-    fav_2 = Favorite.create(pet_id: pet_2.id)
+    Favorite.create(pet_id: pet_1.id)
+    Favorite.create(pet_id: pet_2.id)
 
     visit '/favorites'
 

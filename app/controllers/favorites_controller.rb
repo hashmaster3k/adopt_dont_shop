@@ -1,13 +1,12 @@
 class FavoritesController < ApplicationController
 
   def index
-    @pets = Favorite.find_matching_pets
+    @pets = Pet.find(Favorite.pluck(:pet_id))
   end
 
   def create
     Favorite.create(favorite_params)
     flash[:notice] = "This Pet has been Added to your Favorites"
-    #binding.pry
     redirect_to "/pets/#{params[:pet_id]}"
   end
 
