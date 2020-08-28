@@ -24,35 +24,65 @@ RSpec.describe 'index favorites page' do
                        sex: 'female',
                        shelter_id: shelter_1.id)
 
-    @fav_1 = Favorite.create(pet_id: @pet_1.id)
-    @fav_2 = Favorite.create(pet_id: @pet_2.id)
   end
 
   it 'has link to favorites page and can visit it' do
     visit '/'
-    expect(page).to have_link('FAVORITE PETS:', visible: false)
+    expect(page).to have_link('FAVORITE PETS: 0', visible: false)
     click_link 'FAVORITE PETS', visible: false
     expect(current_path).to eq("/favorites")
   end
 
+  it 'can add pet to favorites' do
+    visit "/pets/#{@pet_2.id}"
+
+    click_button 'ADD PET TO FAVORITES'
+
+    expect(current_path).to eq("/pets/#{@pet_2.id}")
+    expect(page).to have_content('This pet has been added to your favorites')
+    expect(page).to have_link('FAVORITE PETS: 1', visible: false)
+  end
+
   it 'displays all favorite pets' do
+    visit "/pets/#{@pet_1.id}"
+    click_button 'ADD PET TO FAVORITES'
+    visit "/pets/#{@pet_2.id}"
+    click_button 'ADD PET TO FAVORITES'
+
     visit '/favorites'
+
+    expect(page).to have_link('FAVORITE PETS: 2', visible: false)
 
     expect(page).to have_content(@pet_1.name)
     expect(page).to have_content(@pet_2.name)
-
-    visit "/pets/#{@pet_1.id}"
   end
 
   it 'displays message when no favorites added' do
-    Favorite.destroy(@fav_1.id)
-    Favorite.destroy(@fav_2.id)
     visit '/favorites'
 
     expect(page).to have_content('No favorited pets :( Please add some!')
   end
 
+  it 'can remove a single pet from favorites' do
+    visit "/pets/#{@pet_1.id}"
+    click_button 'ADD PET TO FAVORITES'
+
+    visit '/favorites'
+
+    click_button "REMOVE PET FROM FAVORITES"
+
+    expect(current_path).to eq('/favorites')
+    expect(page).to have_content('Removed pet from favorites')
+
+    expect(page).to_not have_content(@pet_1.name)
+  end
+
   it 'can remove all pets at once' do
+    visit "/pets/#{@pet_1.id}"
+    click_button 'ADD PET TO FAVORITES'
+    visit "/pets/#{@pet_2.id}"
+    click_button 'ADD PET TO FAVORITES'
+
     visit '/favorites'
 
     expect(page).to have_content(@pet_1.name)
