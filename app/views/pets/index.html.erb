@@ -18,7 +18,11 @@
 
       <div class='pet-buttons'>
         <%= button_to 'Update Pet', "/pets/#{pet.id}/edit", method: :get %>
-        <%= button_to 'Remove Pet', "/pets/#{pet.id}", method: :delete %>
+        <% if Favorite.where(pet_id: pet.id).count == 1  %>
+          <p>Remove pets from favorites first</p>
+        <% else %>
+          <%= button_to 'Remove Pet', "/pets/#{pet.id}", method: :delete %>
+        <% end %>
       </div>
     </section>
   <% end %>

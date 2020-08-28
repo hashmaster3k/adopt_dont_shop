@@ -18,11 +18,18 @@
       <%= link_to 'HOME', '/', :class => 'nav-link' %>
       <%= link_to 'SHELTERS', '/shelters', :class => 'nav-link' %>
       <%= link_to 'PETS', '/pets', :class => 'nav-link' %>
+      <%= link_to "FAVORITE PETS: #{Favorite.count}", '/favorites', :class => 'nav-link' %>
     </nav>
 
   </head>
 
   <body>
+    <div class="flash-notice">
+      <% flash.each do |type, message| %>
+        <p><%= message %></p>
+      <% end %>
+    </div>
+
     <%= yield %>
   </body>
 </html>

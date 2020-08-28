@@ -12,7 +12,13 @@
                                 <% else %>
                                 <%= "Gone to a great home!" %>
                                 <% end %></li>
-        </ul>      </div>
+        </ul>
+        <% if Favorite.where(pet_id: @pet.id).count == 1 %>
+          <%= button_to "REMOVE PET FROM FAVORITES", "/favorites/#{@pet.id}",  method: :delete, :class => 'fav-button' %>
+        <% else %>
+          <%= button_to "ADD PET TO FAVORITES", "/favorites/#{@pet.id}",  method: :post, :class => 'fav-button'  %>
+        <% end %>
+       </div>
     </div>
     <div class='pbid-header-image'>
       <%= image_tag  "#{@pet.image}"%>
