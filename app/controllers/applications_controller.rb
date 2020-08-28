@@ -4,6 +4,27 @@ class ApplicationsController < ApplicationController
   end
 
   def create
-    require "pry"; binding.pry
+    app = Application.new(application_params)
+
+    if app.save
+      flash[:success] = "Your application has been submitted"
+      Favorite.remove_selected_pets(params[:pets])
+      redirect_to '/favorites'
+    else
+      flash[:notice] = "One or more fields was missing information"
+      redirect_to '/application/new'
+    end
+  end
+
+  private
+  def application_params
+    params.permit(:name,
+                  :address,
+                  :city,
+                  :state,
+                  :zip,
+                  :phone_num,
+                  :description,
+                  :pets => [])
   end
 end

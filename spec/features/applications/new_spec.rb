@@ -33,15 +33,14 @@ RSpec.describe 'create new adoption application' do
     expect(page).to have_button('START ADOPTION PROCESS')
   end
 
-  it 'takes me to the adoption page and fills out form' do
+  it 'it can select a few pets and submit' do
     visit '/favorites'
 
     click_button('START ADOPTION PROCESS')
 
     expect(current_path).to eq('/application/new')
 
-    save_and_open_page
-    within "#pet-#{@pet_2.id}" do
+    within "##{@pet_2.id}" do
       check
     end
 
@@ -50,7 +49,36 @@ RSpec.describe 'create new adoption application' do
     fill_in :city, with: 'Detroit'
     select 'Michigan', from: :state
     fill_in :zip, with: 12345
-    fill_in :phone_num, with: 555-555-5555
+    fill_in :phone_num, with: "555-555-5555"
+    fill_in :description, with: "I'm a great person with a nice home"
+
+    click_button 'Adopt!'
+
+    expect(current_path).to eq('/favorites')
+    expect(page).to have_content("Your application has been submitted")
+    expect(page).to have_content(@pet_1.name)
+  end
+
+  it 'it can select all pets and submit' do
+    visit '/favorites'
+
+    click_button('START ADOPTION PROCESS')
+
+    expect(current_path).to eq('/application/new')
+
+    within "##{@pet_2.id}" do
+      check
+    end
+    within "##{@pet_1.id}" do
+      check
+    end
+
+    fill_in :name, with: 'Jonny Walker'
+    fill_in :address, with: '123 Sesame St.'
+    fill_in :city, with: 'Detroit'
+    select 'Michigan', from: :state
+    fill_in :zip, with: 12345
+    fill_in :phone_num, with: "555-555-5555"
     fill_in :description, with: "I'm a great person with a nice home"
 
     click_button 'Adopt!'

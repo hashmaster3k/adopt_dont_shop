@@ -5,13 +5,13 @@
   <section class='edit-info-box'>
     <%= form_tag "/applications" do %>
 
-      <%= label_tag "Choose what pets you'd like to adopt:" %>
-      <% @favorites.each do |fav| %><br>
+      <%= label_tag "Choose what pets you'd like to adopt:" %><br>
+      <% @favorites.each do |fav| %>
         <br>
-
-        <%= check_box_tag fav.name, fav.id, :id => "pet-#{fav.id}" %>
-        <%= label_tag fav.name %>
-        <br>
+        <div class='check-box' id="<%= fav.id %>">
+          <%= check_box 'pets', nil, {:mulitple => true}, fav.id, nil %>
+          <%= label_tag fav.name %>
+        </div>
       <% end %><br>
 
       <%= label_tag 'Your Name:' %><br>
