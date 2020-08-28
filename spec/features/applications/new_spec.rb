@@ -29,7 +29,7 @@ RSpec.describe 'create new adoption application' do
     click_button 'ADD PET TO FAVORITES'
     visit "/pets/#{@pet_2.id}"
     click_button 'ADD PET TO FAVORITES'
-    
+
     visit '/favorites'
 
     expect(page).to have_button('START ADOPTION PROCESS')
@@ -98,5 +98,39 @@ RSpec.describe 'create new adoption application' do
     expect(current_path).to eq('/favorites')
     expect(page).to have_content("Your application has been submitted")
     expect(page).to have_content("No favorited pets :( Please add some!")
+  end
+
+  it "Flashes an notice if form isn't complete" do
+
+    visit "/pets/#{@pet_1.id}"
+    click_button 'ADD PET TO FAVORITES'
+    visit "/pets/#{@pet_2.id}"
+    click_button 'ADD PET TO FAVORITES'
+
+    visit '/favorites'
+
+    click_button('START ADOPTION PROCESS')
+
+    expect(current_path).to eq('/application/new')
+
+    within "##{@pet_2.id}" do
+      check
+    end
+    within "##{@pet_1.id}" do
+      check
+    end
+
+    fill_in :name, with: 'Jonny Walker'
+    fill_in :address, with: '123 Sesame St.'
+    #fill_in :city, with: 'Detroit'
+    select 'Michigan', from: :state
+    #fill_in :zip, with: 12345
+    fill_in :phone_num, with: "555-555-5555"
+    fill_in :description, with: "I'm a great person with a nice home"
+
+    click_button 'Adopt!'
+
+    expect(current_path).to eq('/application/new')
+    expect(page).to have_content("One or more fields was missing information")
   end
 end
