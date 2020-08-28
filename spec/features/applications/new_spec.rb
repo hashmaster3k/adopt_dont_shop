@@ -22,18 +22,25 @@ RSpec.describe 'create new adoption application' do
                        approx_age: 2,
                        sex: 'female',
                        shelter_id: @shelter_1.id)
-
-    @fav_1 = Favorite.create(pet_id: @pet_1.id)
-    @fav_2 = Favorite.create(pet_id: @pet_2.id)
   end
 
   it 'has link to start adoption process' do
+    visit "/pets/#{@pet_1.id}"
+    click_button 'ADD PET TO FAVORITES'
+    visit "/pets/#{@pet_2.id}"
+    click_button 'ADD PET TO FAVORITES'
+    
     visit '/favorites'
 
     expect(page).to have_button('START ADOPTION PROCESS')
   end
 
   it 'it can select a few pets and submit' do
+    visit "/pets/#{@pet_1.id}"
+    click_button 'ADD PET TO FAVORITES'
+    visit "/pets/#{@pet_2.id}"
+    click_button 'ADD PET TO FAVORITES'
+
     visit '/favorites'
 
     click_button('START ADOPTION PROCESS')
@@ -60,6 +67,11 @@ RSpec.describe 'create new adoption application' do
   end
 
   it 'it can select all pets and submit' do
+    visit "/pets/#{@pet_1.id}"
+    click_button 'ADD PET TO FAVORITES'
+    visit "/pets/#{@pet_2.id}"
+    click_button 'ADD PET TO FAVORITES'
+
     visit '/favorites'
 
     click_button('START ADOPTION PROCESS')

@@ -1,6 +1,6 @@
 class ApplicationsController < ApplicationController
   def new
-    @favorites = Favorite.find_by_id
+    @favorites = Pet.find_pets_by_ids(favorite.contents)
   end
 
   def create
@@ -8,7 +8,7 @@ class ApplicationsController < ApplicationController
 
     if app.save
       flash[:success] = "Your application has been submitted"
-      Favorite.remove_selected_pets(params[:pets])
+      favorite.remove_selected_pets(params[:pets])
       redirect_to '/favorites'
     else
       flash[:notice] = "One or more fields was missing information"

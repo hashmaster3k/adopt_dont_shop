@@ -20,7 +20,7 @@ class FavoritesController < ApplicationController
       flash[:notice] = "Removed all pets from favorites"
       redirect_to '/favorites'
     else
-      favorite.contents.delete(params[:pet_id].to_s)
+      favorite.remove_select_pet(params[:pet_id])
       flash[:notice] = "Removed pet from favorites"
       redirect_to '/favorites'
     end

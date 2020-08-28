@@ -15,4 +15,14 @@ class Favorite
       retrun 0 if @contents == nil
   end
 
+  def remove_select_pet(pet_id)
+    @contents.delete(pet_id.to_s)
+  end
+
+  def remove_selected_pets(array_pet_ids)
+    array_pet_ids.each do |pet|
+      @contents.delete(pet)
+    end
+  end
+
 end
