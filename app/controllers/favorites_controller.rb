@@ -1,28 +1,28 @@
 class FavoritesController < ApplicationController
 
   def index
-    @pets = Favorite.find_by_id
+    array_of_fav_ids = favorite.contents
+    @pets = Pet.find_pets_by_ids(array_of_fav_ids)
+  end
+
+  def update
+    pet_id = params[:pet_id]
+    favorite = Favorite.new(session[:favorites])
+    favorite.add_pet(pet_id)
+    session[:favorites] = favorite.contents
+    flash[:notice] = "This pet has been added to your favorites"
+    redirect_to "/pets/#{pet_id}"
   end
 
   def destroy
     if params[:pet_id] == 'all'
-      Favorite.delete_all
+      favorite.contents.clear
+      flash[:notice] = "Removed all pets from favorites"
       redirect_to '/favorites'
     else
-      favorite = Favorite.where(pet_id: params[:pet_id]).first
-      Favorite.destroy(favorite.id)
+      favorite.contents.delete(params[:pet_id].to_s)
+      flash[:notice] = "Removed pet from favorites"
       redirect_to '/favorites'
     end
-  end
-
-  def create
-    Favorite.create(favorite_params)
-    flash[:notice] = "This Pet has been Added to your Favorites"
-    redirect_to "/pets/#{params[:pet_id]}"
-  end
-
-  private
-  def favorite_params
-    params.permit(:pet_id)
   end
 end
