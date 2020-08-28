@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_27_235505) do
+ActiveRecord::Schema.define(version: 2020_08_28_133326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,10 +24,6 @@ ActiveRecord::Schema.define(version: 2020_08_27_235505) do
     t.string "phone_num"
     t.string "description"
     t.text "pets", default: [], array: true
-  end
-
-  create_table "favorites", force: :cascade do |t|
-    t.integer "pet_id"
   end
 
   create_table "pets", force: :cascade do |t|

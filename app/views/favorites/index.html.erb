@@ -1,4 +1,4 @@
-<% if Favorite.count > 0 %>
+<% if @pets.count > 0 %>
   <article class='all-favs'>
     <section class='adopt-process-button'>
       <%= button_to 'START ADOPTION PROCESS', "/application/new", method: :get %>

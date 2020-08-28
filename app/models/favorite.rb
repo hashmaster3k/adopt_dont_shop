@@ -1,14 +1,18 @@
-class Favorite < ApplicationRecord
+class Favorite
 
-  def self.find_by_id
-    Pet.where(id: Favorite.pluck(:pet_id))
+  attr_reader :contents
+
+  def initialize(contents)
+    @contents = contents || Array.new
   end
 
-  def self.remove_selected_pets(pets)
-    pets.each_with_index do |pet, i|
-      fav_id = Favorite.where(pet_id: pet).first.id
-      Favorite.destroy(fav_id)
-    end
+  def add_pet(pet_id)
+    @contents << pet_id
+  end
+
+  def total_favs
+      return @contents.count if @contents
+      retrun 0 if @contents == nil
   end
 
 end

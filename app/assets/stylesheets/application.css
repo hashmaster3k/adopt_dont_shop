@@ -76,6 +76,7 @@ nav {
   width: 300px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .adopt-process-button {
@@ -127,7 +128,9 @@ a:active {
 .pet-buttons {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
   margin: 10px;
+  padding: 10px;
 }
 
 #sarah {
@@ -280,5 +283,9 @@ hr {
 }
 
 #missing-favs {
+  text-align: center;
+}
+
+.remove-fav-first {
   text-align: center;
 }
