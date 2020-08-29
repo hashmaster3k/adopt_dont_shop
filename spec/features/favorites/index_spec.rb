@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'index favorites page' do
+RSpec.describe 'favorites index page' do
 
   before :each do
     shelter_1 = Shelter.create(name:'Shelter 1',
@@ -95,8 +95,7 @@ RSpec.describe 'index favorites page' do
     expect(page).to have_content('No favorited pets :( Please add some!')
   end
 
-  it " can show a list of all pets with aplications" do
-
+  it 'can show a list of all pets with applications' do
     visit "/pets/#{@pet_1.id}"
     click_button 'ADD PET TO FAVORITES'
     visit "/pets/#{@pet_2.id}"
@@ -109,6 +108,10 @@ RSpec.describe 'index favorites page' do
     expect(current_path).to eq('/application/new')
 
     within "##{@pet_1.id}" do
+      check
+    end
+
+    within "##{@pet_2.id}" do
       check
     end
 
@@ -134,7 +137,6 @@ RSpec.describe 'index favorites page' do
   end
 
   it "display text when no pets have been applied for" do
-
     visit "/favorites"
 
     expect(page).to have_content("No Pets Have Been Applied For")

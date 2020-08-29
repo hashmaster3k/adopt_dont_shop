@@ -3,8 +3,8 @@ class FavoritesController < ApplicationController
   def index
     array_of_fav_ids = favorite.contents
     @pets = Pet.find_pets_by_ids(array_of_fav_ids)
-    #array_applied_ids = Application.get_distinct_applied_pets
-    #@applied_pets = Pet.find_pets_by_ids(array_applied_ids)
+    array_applied_ids = ApplicationPet.get_distinct_applied_pets
+    @applied_pets = Pet.find_pets_by_ids(array_applied_ids)
   end
 
   def update

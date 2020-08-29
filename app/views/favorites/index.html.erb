@@ -32,25 +32,25 @@
   <% end %>
 </article>
 
-<!-- <article class="pet-app-box">
+<article class="pet-app-box">
   <h1>Pets with current Applications</h1>
   <section class="all-app-pets">
-      <#% if @applied_pets.count > 0 %>
-      <#% @applied_pets.each do |pet| %>
+      <% if @applied_pets.count > 0 %>
+      <% @applied_pets.each do |pet| %>
         <div class='pet-box' id='pet-box-<#%= pet.id %>'>
-          <#%= link_to "/pets/#{pet.id}" do %>
-            <#%= image_tag pet.image, :class => 'pet-image'  %>
-            <#% end %>
+          <%= link_to "/pets/#{pet.id}" do %>
+            <%= image_tag pet.image, :class => 'pet-image'  %>
+            <% end %>
 
 
             <div class='pet-info'>
-              <h3><#%= link_to pet.name, "/pets/#{pet.id}", :class => 'pet-link' %></h3>
+              <h3><%= link_to pet.name, "/pets/#{pet.id}", :class => 'pet-link' %></h3>
             </div>
           </div>
-          <#% end  %>
-        <#% else %>
+          <% end  %>
+        <% else %>
         <p id='no-pets-app'>No Pets Have Been Applied For</p>
-    <#% end  %>
+    <% end  %>
  </section>
 
-</article> -->
+</article>
