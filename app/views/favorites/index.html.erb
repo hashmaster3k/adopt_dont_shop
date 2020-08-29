@@ -1,5 +1,5 @@
-<% if @pets.count > 0 %>
-  <article class='all-favs'>
+<article class='all-favs'>
+  <% if @pets.count > 0 %>
     <section class='adopt-process-button'>
       <%= button_to 'START ADOPTION PROCESS', "/application/new", method: :get %>
     </section>
@@ -27,31 +27,30 @@
     <section class='remove-all-favs'>
       <%= button_to 'REMOVE ALL PETS FROM FAVORITES', "/favorites/all", method: :delete %>
     </section>
-  </article>
+  <% else %>
+    <p id='missing-favs'>No favorited pets :( Please add some!</p>
+  <% end %>
+</article>
 
-<% else %>
-  <p id='missing-favs'>No favorited pets :( Please add some!</p>
-<% end %>
-
-<article class="pet-app-box">
+<!-- <article class="pet-app-box">
   <h1>Pets with current Applications</h1>
   <section class="all-app-pets">
-      <% if @applied_pets.count > 0 %>
-      <% @applied_pets.each do |pet| %>
-        <div class='pet-box' id='pet-box-<%= pet.id %>'>
-          <%= link_to "/pets/#{pet.id}" do %>
-            <%= image_tag pet.image, :class => 'pet-image'  %>
-            <% end %>
+      <#% if @applied_pets.count > 0 %>
+      <#% @applied_pets.each do |pet| %>
+        <div class='pet-box' id='pet-box-<#%= pet.id %>'>
+          <#%= link_to "/pets/#{pet.id}" do %>
+            <#%= image_tag pet.image, :class => 'pet-image'  %>
+            <#% end %>
 
 
             <div class='pet-info'>
-              <h3><%= link_to pet.name, "/pets/#{pet.id}", :class => 'pet-link' %></h3>
+              <h3><#%= link_to pet.name, "/pets/#{pet.id}", :class => 'pet-link' %></h3>
             </div>
           </div>
-          <% end  %>
-        <% else %>
+          <#% end  %>
+        <#% else %>
         <p id='no-pets-app'>No Pets Have Been Applied For</p>
-    <% end  %>
+    <#% end  %>
  </section>
 
-</article>
+</article> -->

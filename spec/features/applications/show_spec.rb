@@ -60,6 +60,8 @@ RSpec.describe 'application show page' do
 
     click_button 'Adopt!'
 
+    require "pry"; binding.pry
+
   end
 
   it 'should show application details' do

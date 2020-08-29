@@ -8,7 +8,6 @@ class CreateApplications < ActiveRecord::Migration[5.2]
       t.string :zip
       t.string :phone_num
       t.string :description
-      t.text :pet_ids, array: true, default: []
     end
   end
 end

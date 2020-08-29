@@ -4,7 +4,6 @@ class ApplicationsController < ApplicationController
   end
 
   def create
-    require "pry"; binding.pry
     app = Application.new(application_params)
 
     if app.save

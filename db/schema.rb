@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 2020_08_29_171132) do
     t.string "zip"
     t.string "phone_num"
     t.string "description"
-    t.text "pet_ids", default: [], array: true
   end
 
   create_table "pets", force: :cascade do |t|
