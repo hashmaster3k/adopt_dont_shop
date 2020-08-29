@@ -3,6 +3,10 @@ class ApplicationsController < ApplicationController
     @favorites = Pet.find_pets_by_ids(favorite.contents)
   end
 
+  def show
+    @application = Application.find(params[:application_id])
+  end
+
   def create
     app = Application.new(application_params)
 
@@ -18,13 +22,8 @@ class ApplicationsController < ApplicationController
 
   private
   def application_params
-    params.permit(:name,
-                  :address,
-                  :city,
-                  :state,
-                  :zip,
-                  :phone_num,
-                  :description,
+    params.permit(:name, :address, :city, :state,
+                  :zip, :phone_num, :description,
                   :pet_ids => [])
   end
 end

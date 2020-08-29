@@ -290,11 +290,31 @@ hr {
   text-align: center;
 }
 
-.pet-app-box{
+.pet-app-box {
   text-align: center;
 }
+
 .all-app-pets {
   display: flex;
   justify-content: center;
   text-align: center;
+}
+
+.application-title {
+  margin: 15px;
+  background-color: #00d4ca8f;
+  padding: 10px;
+  font-size: 35px;
+}
+
+.applicant-info {
+  margin: 15px;
+  padding: 20px;
+  background-color: #17d28c73;
+}
+
+.pets-applied-for {
+  margin: 15px;
+  padding: 20px;
+  background-color: beige;
 }
