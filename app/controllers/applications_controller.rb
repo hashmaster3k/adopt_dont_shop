@@ -4,11 +4,12 @@ class ApplicationsController < ApplicationController
   end
 
   def create
+    require "pry"; binding.pry
     app = Application.new(application_params)
 
     if app.save
       flash[:success] = "Your application has been submitted"
-      favorite.remove_selected_pets(params[:pets])
+      favorite.remove_selected_pets(params[:pet_ids])
       redirect_to '/favorites'
     else
       flash[:notice] = "One or more fields was missing information"
@@ -25,6 +26,6 @@ class ApplicationsController < ApplicationController
                   :zip,
                   :phone_num,
                   :description,
-                  :pets => [])
+                  :pet_ids => [])
   end
 end
