@@ -95,4 +95,42 @@ RSpec.describe 'index favorites page' do
     expect(page).to have_content('No favorited pets :( Please add some!')
   end
 
+  it " can show a list of all pets with aplications" do
+
+    visit "/pets/#{@pet_1.id}"
+    click_button 'ADD PET TO FAVORITES'
+    visit "/pets/#{@pet_2.id}"
+    click_button 'ADD PET TO FAVORITES'
+
+    visit '/favorites'
+
+    click_button('START ADOPTION PROCESS')
+
+    expect(current_path).to eq('/application/new')
+
+    within "##{@pet_1.id}" do
+      check
+    end
+
+    fill_in :name, with: 'Jonny Walker'
+    fill_in :address, with: '123 Sesame St.'
+    fill_in :city, with: 'Detroit'
+    select 'Michigan', from: :state
+    fill_in :zip, with: 12345
+    fill_in :phone_num, with: "555-555-5555"
+    fill_in :description, with: "I'm a great person with a nice home"
+
+    click_button 'Adopt!'
+
+    expect(current_path).to eq('/favorites')
+
+    within ".pet-app-box" do
+      expect(page).to have_content("Pets with current Applications")
+      expect(page).to have_content(@pet_1.name)
+      expect(page).to have_link(@pet_1.name)
+      click_link(@pet_1.name)
+      expect(current_path).to eq("/pets/#{@pet_1.id}")
+    end
+  end
+
 end
