@@ -133,4 +133,11 @@ RSpec.describe 'index favorites page' do
     end
   end
 
+  it "display text when no pets have been applied for" do
+
+    visit "/favorites"
+
+    expect(page).to have_content("No Pets Have Been Applied For")
+  end
+
 end

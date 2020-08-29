@@ -289,3 +289,12 @@ hr {
 .remove-fav-first {
   text-align: center;
 }
+
+.pet-app-box{
+  text-align: center;
+}
+.all-app-pets {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
