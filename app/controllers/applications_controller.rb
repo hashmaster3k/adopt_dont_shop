@@ -1,6 +1,10 @@
 class ApplicationsController < ApplicationController
   def new
-    @favorites = Favorite.find_by_id
+    @favorites = Pet.find_pets_by_ids(favorite.contents)
+  end
+
+  def show
+    @application = Application.find(params[:application_id])
   end
 
   def create
@@ -8,7 +12,7 @@ class ApplicationsController < ApplicationController
 
     if app.save
       flash[:success] = "Your application has been submitted"
-      Favorite.remove_selected_pets(params[:pets])
+      favorite.remove_selected_pets(params[:pet_ids])
       redirect_to '/favorites'
     else
       flash[:notice] = "One or more fields was missing information"
@@ -18,13 +22,8 @@ class ApplicationsController < ApplicationController
 
   private
   def application_params
-    params.permit(:name,
-                  :address,
-                  :city,
-                  :state,
-                  :zip,
-                  :phone_num,
-                  :description,
-                  :pets => [])
+    params.permit(:name, :address, :city, :state,
+                  :zip, :phone_num, :description,
+                  :pet_ids => [])
   end
 end

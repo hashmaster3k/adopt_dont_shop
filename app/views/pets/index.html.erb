@@ -2,7 +2,7 @@
   <% @pets.each do |pet| %>
     <section class='pet-box'>
         <%= link_to "/pets/#{pet.id}" do %>
-          <%= image_tag pet.image, :class => 'pet-image'  %>
+          <%=  image_tag "/images/#{pet.image}", class: 'pet-image' %>
         <% end %>
 
       <div class='pet-info'>
