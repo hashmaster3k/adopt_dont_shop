@@ -1,5 +1,5 @@
 <article class='all-favs'>
-  <% if @pets.count > 0 %>
+  <% if @pets.total_pets > 0 %>
     <section class='adopt-process-button'>
       <%= button_to 'START ADOPTION PROCESS', "/application/new", method: :get %>
     </section>
@@ -35,7 +35,7 @@
 <article class="pet-app-box">
   <h1>Pets with current Applications</h1>
   <section class="all-app-pets">
-      <% if @applied_pets.count > 0 %>
+      <% if @applied_pets.total_pets > 0 %>
       <% @applied_pets.each do |pet| %>
         <div class='pet-box' id='pet-box-<#%= pet.id %>'>
           <%= link_to "/pets/#{pet.id}" do %>

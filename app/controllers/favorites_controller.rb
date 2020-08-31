@@ -18,7 +18,7 @@ class FavoritesController < ApplicationController
 
   def destroy
     if params[:pet_id] == 'all'
-      favorite.contents.clear
+      favorite.clear_contents
       flash[:notice] = "Removed all pets from favorites"
       redirect_to '/favorites'
     else

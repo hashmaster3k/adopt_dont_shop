@@ -6,4 +6,8 @@ class Application < ApplicationRecord
   def self.get_distinct_applied_pets
     Application.pluck(:pet_ids).flatten.uniq
   end
+
+  def self.num_of_applications
+    Application.count
+  end
 end

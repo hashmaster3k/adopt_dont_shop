@@ -25,4 +25,12 @@ class Favorite
     end
   end
 
+  def count_contents
+    @contents.count
+  end
+
+  def clear_contents
+    @contents.clear
+  end
+
 end
