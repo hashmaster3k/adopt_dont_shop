@@ -1,0 +1,41 @@
+<article class='application-whole'>
+  <section class ='application-title'>
+    Application # <%= @application.id %>
+  </section>
+
+  <section class='applicant-info'>
+      <h1>Name of Applicant: <%= @application.name %></h1>
+      <ul>
+        <li>Phone Number: <%= @application.phone_num %> </li>
+        <li>Address: <%= @application.address %> <%= @application.city %>, <%= @application.state %> <%= @application.zip %></li>
+      </ul>
+      <p>Description of why applicant is good suiter for pets: <br><br>
+      <%= @application.description %></p>
+  </section>
+
+  <section class='pets-applied-for'>
+    <h3>Applied for pets:</h3>
+    <% @application.pets.each do |pet| %>
+      <ul>
+        <li>
+        <div id=<%= pet.id %>>
+          <%= link_to pet.name, "/pets/#{pet.id}" %>
+          <% if pet.adopter_id != @application.id || pet.adopt_pending == false %>
+            <%= form_tag "/pets/#{pet.id}", method: :patch do %>
+              <%= hidden_field_tag :change, "status-approve" %>
+              <%= hidden_field_tag :adopter_id, @application.id %>
+              <%= submit_tag "Approve Application" %>
+            <% end %>
+          <% else %>
+            <%= form_tag "/pets/#{pet.id}", method: :patch do %>
+              <%= hidden_field_tag :change, "status-revoke" %>
+              <%= hidden_field_tag :adopter_id, @application.id %>
+              <%= submit_tag "Revoke Application" %>
+            <% end %>
+          <% end %>
+        </div>
+      </li>
+      </ul>
+    <% end %>
+  </section>
+</article>

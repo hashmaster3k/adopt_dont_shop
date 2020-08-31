@@ -3,6 +3,8 @@ class FavoritesController < ApplicationController
   def index
     array_of_fav_ids = favorite.contents
     @pets = Pet.find_pets_by_ids(array_of_fav_ids)
+    array_applied_ids = ApplicationPet.get_distinct_applied_pets
+    @applied_pets = Pet.find_pets_by_ids(array_applied_ids)
   end
 
   def update
@@ -16,11 +18,11 @@ class FavoritesController < ApplicationController
 
   def destroy
     if params[:pet_id] == 'all'
-      favorite.contents.clear
+      favorite.clear_contents
       flash[:notice] = "Removed all pets from favorites"
       redirect_to '/favorites'
     else
-      favorite.contents.delete(params[:pet_id].to_s)
+      favorite.remove_select_pet(params[:pet_id])
       flash[:notice] = "Removed pet from favorites"
       redirect_to '/favorites'
     end

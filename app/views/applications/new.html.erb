@@ -9,7 +9,7 @@
       <% @favorites.each do |fav| %>
         <br>
         <div class='check-box' id="<%= fav.id %>">
-          <%= check_box 'pets', nil, {:mulitple => true}, fav.id, nil %>
+          <%= check_box 'pet_ids', nil, {:mulitple => true}, fav.id, nil %>
           <%= label_tag fav.name %>
         </div>
       <% end %><br>
