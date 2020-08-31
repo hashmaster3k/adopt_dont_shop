@@ -7,12 +7,12 @@
         <ul>
           <li>Age: <%= @pet.approx_age %></li>
           <li>Sex: <%= @pet.sex %></li>
-          <li>Adoption Status: <% if @pet.adopt_pending == true && @pet.adopted? == false%>
-                                Pending, on hold for <%= @pet.applications.find(@pet.adopter_id).name %>
+          <li>Adoption Status: <% if @pet.adopt_pending == true && @pet.adopted? == false %>
+                                  Pending, on hold for <%= @pet.applications.find(@pet.adopter_id).name %>
                                 <% elsif @pet.adopted? == false %>
-                                <%= "Ready for adoption!" %>
+                                  <%= "Ready for adoption!" %>
                                 <% else %>
-                                <%= "Gone to a great home!" %>
+                                  <%= "Gone to a great home!" %>
                                 <% end %></li>
         </ul>
           <%  if  session[:favorites] != nil && session[:favorites].include?(@pet.id.to_s)%>

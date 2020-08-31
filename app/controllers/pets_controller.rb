@@ -24,7 +24,7 @@ class PetsController < ApplicationController
 
   def update
     pet = Pet.find(params[:pet_id])
-      if params[:change] = :status
+      if params[:change] == "status"
         pet.update_attribute(:adopt_pending, true)
         pet.update_attribute(:adopter_id, params[:adopter_id])
         redirect_to "/pets/#{pet.id}"
