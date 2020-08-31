@@ -17,7 +17,15 @@
     <h3>Applied for pets:</h3>
     <% @application.pets.each do |pet| %>
       <ul>
-        <li><%= link_to pet.name, "/pets/#{pet.id}" %></li>
+        <li>
+        <div id=<%= pet.id %> >
+          <%= link_to pet.name, "/pets/#{pet.id}" %>< - <%= form_tag "/pets/#{pet.id}", method: :patch do %>
+          <%= hidden_field_tag :change, :status %>
+          <%= hidden_field_tag :adopter_id, @application.id %>
+          <%= submit_tag "Approve Application" %>
+          <% end %>
+        </div>
+      </li>
       </ul>
     <% end %>
   </section>

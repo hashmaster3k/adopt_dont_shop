@@ -7,7 +7,9 @@
         <ul>
           <li>Age: <%= @pet.approx_age %></li>
           <li>Sex: <%= @pet.sex %></li>
-          <li>Adoption Status: <% if @pet.adopted? == false%>
+          <li>Adoption Status: <% if @pet.adopt_pending == true && @pet.adopted? == false%>
+                                Pending, on hold for <%= @pet.applications.find(@pet.adopter_id).name %>
+                                <% elsif @pet.adopted? == false %>
                                 <%= "Ready for adoption!" %>
                                 <% else %>
                                 <%= "Gone to a great home!" %>

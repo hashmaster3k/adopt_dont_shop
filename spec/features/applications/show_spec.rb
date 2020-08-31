@@ -46,4 +46,18 @@ RSpec.describe 'application show page' do
     expect(page).to have_link(@pet_1.name)
     expect(page).to have_link(@pet_2.name)
   end
+
+  it "show a approve button for each pet" do
+
+    visit "/applications/#{@app_1.id}"
+
+    within "##{@pet_1.id}" do
+      expect(page).to have_button('Approve Application')
+      click_button
+    end
+binding.pry
+    expect(current_path).to eq("/pets/#{@pet_1.id}")
+    expect(page).to have_content("Pending")
+    expect(page).to have_content("on hold for #{@app_1.name}")
+  end
 end
