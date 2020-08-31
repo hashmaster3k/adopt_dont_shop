@@ -12,8 +12,14 @@ class SheltersController < ApplicationController
   end
 
   def create
-    Shelter.create(shelter_info)
-    redirect_to '/shelters'
+    shelter = Shelter.new(shelter_info)
+    if shelter.save
+      flash[:notice] = "Succesfully created #{shelter.name}!"
+      redirect_to '/shelters'
+    else
+      flash.now[:notice] = "The following fields are missing: #{grab_empty_keys} "
+      render :new
+    end
   end
 
   def edit
@@ -22,8 +28,13 @@ class SheltersController < ApplicationController
 
   def update
     shelter = Shelter.find(params[:shelter_id])
-    shelter.update(shelter_info)
-    redirect_to "/shelters/#{shelter.id}"
+    if shelter.update(shelter_info)
+      flash[:notice] = "Succesfully updated #{shelter.name}!"
+      redirect_to "/shelters/#{shelter.id}"
+    else
+      flash[:notice] = "The following fields are missing: #{grab_empty_keys} "
+      redirect_to "/shelters/#{shelter.id}/edit"
+    end
   end
 
   def destroy
@@ -44,5 +55,15 @@ class SheltersController < ApplicationController
   private
   def shelter_info
     params.permit(:name, :address, :city, :state, :zip)
+  end
+
+  def grab_empty_keys
+    keys = []
+    params.each do |key, value|
+      if value.empty?
+        keys << key
+      end
+    end
+    keys
   end
 end
