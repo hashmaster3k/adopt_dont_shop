@@ -1,0 +1,63 @@
+require 'rails_helper'
+
+RSpec.describe 'Application pets show page' do
+
+  before :each do
+    @shelter_1 = Shelter.create(name:'Shelter 1',
+                               address:'123 Bradford Rd',
+                               city:'Union City',
+                               state:'CA',
+                               zip:90210)
+
+
+    @pet_1 = @shelter_1.pets.create(image: 'dog1.jpg',
+                       name: 'Johnny',
+                       approx_age: 3,
+                       sex: 'male',
+                       shelter_id: @shelter_1.id)
+
+    @pet_2 = @shelter_1.pets.create(image: 'dog2.jpg',
+                       name: 'Marg',
+                       approx_age: 2,
+                       sex: 'female',
+                       shelter_id: @shelter_1.id)
+
+    @app_1 = Application.create!(name: "Billy Joel",
+                               address: "1234 Song St.",
+                               city: "Las Vegas",
+                               state: "NV",
+                               zip: "12345",
+                               phone_num: "123-456-7890",
+                               description: "I'm Bill Joel!",
+                               pet_ids: ["#{@pet_1.id}"])
+
+  end
+  it "Can view applications for pets" do
+
+    visit "/pets/#{@pet_1.id}"
+
+    expect(page).to have_link("View all applications for this pet")
+
+    click_link "View all applications for this pet"
+
+    expect(current_path).to eq("/application_pets/#{@pet_1.id}")
+  end
+
+  it "can list applicants and their links" do
+
+    visit "/application_pets/#{@pet_1.id}"
+
+    expect(page).to have_link(@app_1.name)
+
+  end
+
+  it "currently has no applications" do
+
+  visit "/pets/#{@pet_2.id}"
+
+  click_link "View all applications for this pet"
+
+  expect(page).to have_content("This pet currently has no applications")
+
+  end
+end

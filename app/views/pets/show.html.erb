@@ -17,6 +17,7 @@
             <%= button_to "REMOVE PET FROM FAVORITES", "/favorites/#{@pet.id}",  method: :delete, :class => 'fav-button' %>
           <% else %>
             <%= button_to "ADD PET TO FAVORITES", "/favorites/#{@pet.id}",  method: :post, :class => 'fav-button'  %>
+            <%= link_to "View all applications for this pet", "/application_pets/#{@pet.id}" %>
           <% end %>
 
        </div>

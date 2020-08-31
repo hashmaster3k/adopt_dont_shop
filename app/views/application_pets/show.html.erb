@@ -1,0 +1,10 @@
+<article class="applicants">
+   <h3>All Applications for <%= @pet.name %></h3>
+   <% if @pet.applications.count > 0  %>
+    <%= @pet.applications.each do |app| %>
+      <%= link_to app.name, "/applications/#{app.id}" %>
+      <% end %>
+   <% else  %>
+    <p>This pet currently has no applications</p>
+   <% end  %>
+</article>
