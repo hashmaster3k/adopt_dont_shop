@@ -18,8 +18,20 @@
     <% @application.pets.each do |pet| %>
       <ul>
         <li>
-        <div id=<%= pet.id %> >
-          <%= link_to pet.name, "/pets/#{pet.id}" %> <- <%= form_tag "/pets/#{pet.id}", method: :patch do %><%= hidden_field_tag :change, :status %><%= hidden_field_tag :adopter_id, @application.id %><%= submit_tag "Approve Application" %>
+        <div id=<%= pet.id %>>
+          <%= link_to pet.name, "/pets/#{pet.id}" %>
+          <% if pet.adopter_id != @application.id || pet.adopt_pending == false %>
+            <%= form_tag "/pets/#{pet.id}", method: :patch do %>
+              <%= hidden_field_tag :change, "status-approve" %>
+              <%= hidden_field_tag :adopter_id, @application.id %>
+              <%= submit_tag "Approve Application" %>
+            <% end %>
+          <% else %>
+            <%= form_tag "/pets/#{pet.id}", method: :patch do %>
+              <%= hidden_field_tag :change, "status-revoke" %>
+              <%= hidden_field_tag :adopter_id, @application.id %>
+              <%= submit_tag "Revoke Application" %>
+            <% end %>
           <% end %>
         </div>
       </li>

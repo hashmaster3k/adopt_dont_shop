@@ -61,6 +61,34 @@ RSpec.describe 'application show page' do
   end
 
   it 'cannot approve pet for adoption more than once' do
+    @app_2 = Application.create!(name: "Mark Morrison",
+                                address: "1234 Song St.",
+                                city: "Las Vegas",
+                                state: "NV",
+                                zip: "12345",
+                                phone_num: "123-456-7890",
+                                description: "Return of the Mack!",
+                                pet_ids: ["#{@pet_1.id}", "#{@pet_2.id}"])
+
+    visit "/applications/#{@app_1.id}"
+
+    within "##{@pet_1.id}" do
+      expect(page).to have_button('Approve Application')
+      click_button
+    end
+
+    visit "/applications/#{@app_2.id}"
+
+    within "##{@pet_1.id}" do
+      expect(page).to have_button('Approve Application')
+      click_button
+    end
+
+    expect(current_path).to eq("/applications/#{@app_2.id}")
+    expect(page).to have_content("Adoption pending for this pet already.")
+  end
+
+  it 'can revoke approval of adoption' do
     visit "/applications/#{@app_1.id}"
 
     within "##{@pet_1.id}" do
@@ -71,11 +99,18 @@ RSpec.describe 'application show page' do
     visit "/applications/#{@app_1.id}"
 
     within "##{@pet_1.id}" do
-      expect(page).to have_button('Approve Application')
+      expect(page).to have_button('Revoke Application')
       click_button
     end
 
     expect(current_path).to eq("/applications/#{@app_1.id}")
-    expect(page).to have_content("Adoption pending for this pet already.")
+
+    within "##{@pet_1.id}" do
+      expect(page).to have_button('Approve Application')
+    end
+
+    visit "/pets/#{@pet_1.id}"
+
+    expect(page).to have_content("Ready for adoption!")
   end
 end
