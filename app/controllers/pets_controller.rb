@@ -24,14 +24,17 @@ class PetsController < ApplicationController
 
   def update
     pet = Pet.find(params[:pet_id])
-      if params[:change] == "status"
-        pet.update_attribute(:adopt_pending, true)
-        pet.update_attribute(:adopter_id, params[:adopter_id])
-        redirect_to "/pets/#{pet.id}"
-      else
-        pet.update(pet_params)
-        redirect_to "/pets/#{pet.id}"
-      end
+    if pet.adopt_pending == true
+      flash[:notice] = "Adoption pending for this pet already."
+      redirect_to "/applications/#{params[:adopter_id]}"
+    elsif params[:change] == "status"
+      pet.update_attribute(:adopt_pending, true)
+      pet.update_attribute(:adopter_id, params[:adopter_id])
+      redirect_to "/pets/#{pet.id}"
+    else
+      pet.update(pet_params)
+      redirect_to "/pets/#{pet.id}"
+    end
   end
 
   def destroy

@@ -19,10 +19,7 @@
       <ul>
         <li>
         <div id=<%= pet.id %> >
-          <%= link_to pet.name, "/pets/#{pet.id}" %>< - <%= form_tag "/pets/#{pet.id}", method: :patch do %>
-          <%= hidden_field_tag :change, :status %>
-          <%= hidden_field_tag :adopter_id, @application.id %>
-          <%= submit_tag "Approve Application" %>
+          <%= link_to pet.name, "/pets/#{pet.id}" %> <- <%= form_tag "/pets/#{pet.id}", method: :patch do %><%= hidden_field_tag :change, :status %><%= hidden_field_tag :adopter_id, @application.id %><%= submit_tag "Approve Application" %>
           <% end %>
         </div>
       </li>

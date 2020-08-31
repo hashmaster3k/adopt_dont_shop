@@ -59,4 +59,23 @@ RSpec.describe 'application show page' do
     expect(page).to have_content("Pending")
     expect(page).to have_content("on hold for #{@app_1.name}")
   end
+
+  it 'cannot approve pet for adoption more than once' do
+    visit "/applications/#{@app_1.id}"
+
+    within "##{@pet_1.id}" do
+      expect(page).to have_button('Approve Application')
+      click_button
+    end
+
+    visit "/applications/#{@app_1.id}"
+
+    within "##{@pet_1.id}" do
+      expect(page).to have_button('Approve Application')
+      click_button
+    end
+
+    expect(current_path).to eq("/applications/#{@app_1.id}")
+    expect(page).to have_content("Adoption pending for this pet already.")
+  end
 end
