@@ -318,3 +318,37 @@ hr {
   padding: 20px;
   background-color: beige;
 }
+
+.all-favs h1 {
+  margin: 15px;
+  background-color: #00d4ca8f;
+  padding: 10px;
+  font-size: 35px;
+}
+
+.all-favs p {
+  margin: 15px;
+  padding: 10px;
+  font-size: 25px;
+}
+
+.pet-app-box h1 {
+  margin: 15px;
+  background-color: #00d4ca8f;
+  padding: 10px;
+  font-size: 35px;
+}
+
+.applicants h1 {
+  margin: 15px;
+  background-color: #00d4ca8f;
+  padding: 10px;
+  font-size: 35px;
+}
+
+.applicants-box {
+  background-color: beige;
+  margin: 15px;
+  padding: 15px;
+  font-size: 20px;
+}

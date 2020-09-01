@@ -5,8 +5,8 @@
       <h3><%= link_to shelter.name, "/shelters/#{shelter.id}", :class => 'shelter-header' %></h3>
 
       <div class='shelter-buttons'>
-        <%= button_to 'Update Shelter', "/shelters/#{shelter.id}/edit", method: :get %>
-        <%= button_to 'Delete Shelter', "/shelters/#{shelter.id}", method: :delete %>
+        <%= button_to 'Update Shelter', "/shelters/#{shelter.id}/edit", method: :get, :class => 'shelter-button' %>
+        <%= button_to 'Delete Shelter', "/shelters/#{shelter.id}", method: :delete, :class => 'shelter-button' %>
       </div>
     </div>
   <% end %>
