@@ -16,6 +16,7 @@ RSpec.describe 'shows individual pet based on :id' do
                        name: 'Johnny',
                        approx_age: 3,
                        sex: 'male',
+                       description: 'Cool pet!',
                        shelter_id: shelter_1.id)
 
     visit "/pets/#{pet_1.id}"

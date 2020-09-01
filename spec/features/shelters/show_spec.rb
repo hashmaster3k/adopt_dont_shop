@@ -170,7 +170,8 @@ RSpec.describe 'shelter show page' do
     pet_1 = shelter_1.pets.create(image: 'dog1.jpg',
                                 name: 'Johnny',
                                 approx_age: 3,
-                                sex: 'male')
+                                sex: 'male',
+                                description: 'Cool pet!')
 
     app_1 = Application.create!(name: "Billy Joel",
                                 address: "1234 Song St.",

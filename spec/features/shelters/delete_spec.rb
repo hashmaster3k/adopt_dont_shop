@@ -15,12 +15,14 @@ RSpec.describe 'delete a shelter tests' do
                        name: 'Johnny',
                        approx_age: 3,
                        sex: 'male',
+                       description: 'Cool pet!',
                        shelter_id: @shelter_1.id)
 
     @pet_2 = @shelter_1.pets.create(image: 'dog2.jpg',
                        name: 'Marg',
                        approx_age: 2,
                        sex: 'female',
+                       description: 'Sweet pet!',
                        shelter_id: @shelter_1.id)
 
     @app_1 = Application.create!(name: "Billy Joel",
