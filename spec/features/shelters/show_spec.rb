@@ -58,7 +58,7 @@ RSpec.describe 'shelter show page' do
 
     review_1 = Review.create(shelter_id: shelter_1.id,
                               title: "The Best Shelter!",
-                              rating: "5 Stars",
+                              rating: 5,
                               content: "The staff were super nice and the proccess was easy!")
 
     visit "/shelters/#{shelter_1.id}"
@@ -99,7 +99,7 @@ RSpec.describe 'shelter show page' do
     visit "/shelters/#{shelter_1.id}"
 
     expect(page).to have_content('Boooooooo')
-    expect(page).to have_content('Rating: 1 star')
+    expect(page).to have_content('Rating: 1')
     expect(page).to have_content('My pet got sick from this place')
 
     expect(page).to have_button('Delete Review')
@@ -107,7 +107,7 @@ RSpec.describe 'shelter show page' do
     click_button 'Delete Review'
 
     expect(page).to_not have_content('Boooooooo')
-    expect(page).to_not have_content('Rating: 1 star')
+    expect(page).to_not have_content('Rating: 1')
     expect(page).to_not have_content('My pet got sick from this place')
 
 
