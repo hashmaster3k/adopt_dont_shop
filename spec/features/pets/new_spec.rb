@@ -46,7 +46,7 @@ RSpec.describe 'add new pet to shelter page' do
    fill_in :description, with: 'Has a heart of gold!'
 
    click_button 'Add Pet'
-save_and_open_page
+   
    expect(page).to have_content('The following fields are missing: ["approx_age"]')
   end
 

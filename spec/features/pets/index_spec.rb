@@ -21,12 +21,14 @@ RSpec.describe 'pets index page' do
                        name: 'Johnny',
                        approx_age: 3,
                        sex: 'male',
+                       description: 'Cool pet!',
                        shelter_id: shelter_1.id)
 
     pet_2 = Pet.create(image: 'dog2.jpg',
                        name: 'Marg',
                        approx_age: 2,
                        sex: 'female',
+                       description: 'Sweet pet!',
                        shelter_id: shelter_2.id)
 
     visit '/pets'
@@ -55,6 +57,7 @@ RSpec.describe 'pets index page' do
                name: 'Johnny',
                approx_age: 3,
                sex: 'male',
+               description: 'Cool pet!',
                shelter_id: shelter_1.id)
 
     visit '/pets'
@@ -76,6 +79,7 @@ RSpec.describe 'pets index page' do
                name: 'Johnny',
                approx_age: 3,
                sex: 'male',
+               description: 'Cool pet!',
                shelter_id: shelter_1.id)
 
     visit '/pets'
