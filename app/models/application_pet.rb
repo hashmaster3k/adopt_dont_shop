@@ -9,4 +9,5 @@ class ApplicationPet < ApplicationRecord
   def self.delete_all_selected_app_pets
     ApplicationPet.delete_all
   end
+
 end

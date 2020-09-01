@@ -112,4 +112,79 @@ RSpec.describe 'shelter show page' do
 
 
   end
+
+  it "can show the number of pets in the shelter" do
+
+    shelter_1 = Shelter.create(name: 'Shelter 1',
+                                address: '123 Bradford Rd',
+                                city: 'Union City',
+                                state: 'CA',
+                                zip: 90210)
+
+    shelter_1.pets.create(image: 'dog1.jpg',
+                                name: 'Johnny',
+                                approx_age: 3,
+                                sex: 'male')
+
+    visit "/shelters/#{shelter_1.id}"
+
+    expect(page).to have_content("Number of pets: #{shelter_1.pets.count}")
+
+  end
+
+  it "can show average review" do
+
+    shelter_1 = Shelter.create(name: 'Shelter 1',
+                                address: '123 Bradford Rd',
+                                city: 'Union City',
+                                state: 'CA',
+                                zip: 90210)
+
+    shelter_1.pets.create(image: 'dog1.jpg',
+                                name: 'Johnny',
+                                approx_age: 3,
+                                sex: 'male')
+
+    shelter_1.reviews.create!(title: 'Boooooooo',
+                              rating: 1,
+                              content: 'My pet got place')
+
+    shelter_1.reviews.create!(title: 'Weeeeeeeeee',
+                              rating: 5,
+                              content: 'My pet went down a slide')
+
+    visit "/shelters/#{shelter_1.id}"
+
+
+    expect(page).to have_content("Average Rating: 3.0")
+  end
+
+  it "shows how many applicants have applied" do
+
+    shelter_1 = Shelter.create(name: 'Shelter 1',
+                                address: '123 Bradford Rd',
+                                city: 'Union City',
+                                state: 'CA',
+                                zip: 90210)
+
+    pet_1 = shelter_1.pets.create(image: 'dog1.jpg',
+                                name: 'Johnny',
+                                approx_age: 3,
+                                sex: 'male')
+
+    app_1 = Application.create!(name: "Billy Joel",
+                                address: "1234 Song St.",
+                                city: "Las Vegas",
+                                state: "NV",
+                                zip: "12345",
+                                phone_num: "123-456-7890",
+                                description: "I'm Bill Joel!",
+                                pet_ids: ["#{pet_1.id}"])
+
+
+    visit "/shelters/#{shelter_1.id}"
+
+    expect(page).to have_content("Current applications: 1")
+  end
+
 end

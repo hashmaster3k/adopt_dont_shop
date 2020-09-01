@@ -26,4 +26,9 @@ class Pet < ApplicationRecord
     end
   end
 
+  def self.num_of_total_applications
+    binding.pry
+    Pet.joins(:application_pets).where('application_pets.pet_id = pet.id').count
+  end
+
 end
