@@ -3,17 +3,11 @@
 </div>
 <article class="edit-info">
   <section class='edit-info-box'>
-    <%= form_tag "/reviews/#{@review.id}", method: :patch do%>
-      <%= label_tag 'Title:' %><br>
-      <%= text_field_tag :title, @review.title %><br><br>
-
-      <%= label_tag 'Rating:' %><br>
-      <%= text_field_tag :rating, @review.rating %><br><br>
-
-      <%= label_tag 'Content:' %><br>
-      <%= text_area_tag :content, @review.content %><br><br>
-
-      <%= submit_tag 'Edit Review' %>
-    <% end %>
+    <%= render partial: 'form', locals: {path: "/reviews/#{@review.id}",
+                                         method: :patch,
+                                         submit_button: 'Edit Review',
+                                         title: @review.title,
+                                         rating: @review.rating,
+                                         content: @review.content} %>
   </section>
 </article>

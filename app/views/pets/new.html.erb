@@ -3,23 +3,13 @@
 </div>
 <article class="edit-info">
   <section class='edit-info-box'>
-    <%= form_tag "/shelters/#{@shelter_id}/pets" do %>
-      <%= label_tag 'Pet Name:' %><br>
-      <%= text_field_tag :name %><br><br>
-
-      <%= label_tag 'Approxamite age:' %><br>
-      <%= text_field_tag :approx_age %><br><br>
-
-      <%= label_tag 'Sex:' %>  <br>
-      <%= text_field_tag :sex %><br><br>
-
-      <%= label_tag 'Image:' %><br>
-      <%= text_field_tag :image %><br><br>
-
-      <%= label_tag 'Description:' %><br>
-      <%= text_area_tag :description, nil, size:'16x5' %><br><br>
-
-      <%= submit_tag 'Add Pet' %>
-    <% end %>
+    <%= render partial: 'form', locals: {path: "/shelters/#{@shelter_id}/pets",
+                                         method: :post,
+                                         submit_button: 'Add Pet',
+                                         name: '',
+                                         approx_age: '',
+                                         sex: '',
+                                         image: '',
+                                         description: ''} %>
   </section>
 </article>
