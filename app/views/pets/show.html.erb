@@ -18,8 +18,8 @@
           <%  if  session[:favorites] != nil && session[:favorites].include?(@pet.id.to_s)%>
             <%= button_to "REMOVE PET FROM FAVORITES", "/favorites/#{@pet.id}",  method: :delete, :class => 'fav-button' %>
           <% else %>
-            <%= button_to "ADD PET TO FAVORITES", "/favorites/#{@pet.id}",  method: :post, :class => 'fav-button'  %>
-            <%= link_to "View all applications for this pet", "/application_pets/#{@pet.id}" %>
+            <%= button_to "ADD #{@pet.name.upcase} TO FAVORITES", "/favorites/#{@pet.id}",  method: :post, :class => 'fav-button' %>
+            <%= button_to "VIEW APPLICATIONS FOR #{@pet.name.upcase}", "/application_pets/#{@pet.id}",  method: :get, :class => 'fav-button' %>
           <% end %>
 
        </div>

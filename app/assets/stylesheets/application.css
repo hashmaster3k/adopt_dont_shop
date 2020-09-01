@@ -210,7 +210,7 @@ a:active {
 .pbid-header-info form {
   display: grid;
   padding-right: 30px;
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .fav-button {

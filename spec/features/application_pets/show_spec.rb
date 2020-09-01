@@ -1,3 +1,5 @@
+# spec/features/application_pets/show_spec.rb
+
 require 'rails_helper'
 
 RSpec.describe 'Application pets show page' do
@@ -33,31 +35,26 @@ RSpec.describe 'Application pets show page' do
 
   end
   it "Can view applications for pets" do
-
     visit "/pets/#{@pet_1.id}"
 
-    expect(page).to have_link("View all applications for this pet")
+    expect(page).to have_button("VIEW APPLICATIONS FOR #{@pet_1.name.upcase}")
 
-    click_link "View all applications for this pet"
+    click_button "VIEW APPLICATIONS FOR #{@pet_1.name.upcase}"
 
     expect(current_path).to eq("/application_pets/#{@pet_1.id}")
   end
 
   it "can list applicants and their links" do
-
     visit "/application_pets/#{@pet_1.id}"
 
     expect(page).to have_link(@app_1.name)
-
   end
 
   it "currently has no applications" do
+    visit "/pets/#{@pet_2.id}"
 
-  visit "/pets/#{@pet_2.id}"
+    click_button "VIEW APPLICATIONS FOR #{@pet_2.name.upcase}"
 
-  click_link "View all applications for this pet"
-
-  expect(page).to have_content("This pet currently has no applications")
-
+    expect(page).to have_content("This pet currently has no applications")
   end
 end
