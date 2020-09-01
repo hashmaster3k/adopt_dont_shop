@@ -38,12 +38,13 @@ RSpec.describe 'edit shelter page' do
 
     fill_in :name, with: 'Test Shelter'
     fill_in :address, with: '1st St.'
+    fill_in :city, with: ''
     select 'Colorado', from: :state
     fill_in :zip, with: '80102'
 
     click_button 'Update Shelter'
 
-    expect(current_path).to eq("/shelters/#{@shelter_1.id}")
+    expect(current_path).to eq("/shelters/#{@shelter_1.id}/edit")
     expect(page).to have_content('The following fields are missing: ["city"]')
 
   end
