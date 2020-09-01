@@ -18,11 +18,7 @@
 
       <div class='pet-buttons'>
         <%= button_to 'Update Pet', "/pets/#{pet.id}/edit", method: :get %>
-        <% if favorite.contents.include?(pet.id.to_s) %>
-         <p class='remove-fav-first'>Remove pets from <br> favorites first</p>
-        <% else %>
-          <%= button_to 'Remove Pet', "/pets/#{pet.id}", method: :delete %>
-        <% end %>
+        <%= button_to 'Remove Pet', "/pets/#{pet.id}", method: :delete %>
       </div>
     </section>
   <% end %>
