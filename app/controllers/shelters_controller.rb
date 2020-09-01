@@ -60,9 +60,7 @@ class SheltersController < ApplicationController
   def grab_empty_keys
     keys = []
     params.each do |key, value|
-      if value.empty?
-        keys << key
-      end
+      keys << key if value.empty?
     end
     keys
   end
