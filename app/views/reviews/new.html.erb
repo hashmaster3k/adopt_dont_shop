@@ -3,17 +3,12 @@
 </div>
 <article class="edit-info">
   <section class='edit-info-box'>
-    <%= form_tag "/shelters/#{@shelter_id}/reviews" do%>
-      <%= label_tag 'Title:' %><br>
-      <%= text_field_tag :title %><br><br>
+    <%= render partial: 'form', locals: {path: "/shelters/#{@shelter_id}/reviews",
+                                         method: :post,
+                                         submit_button: 'Create Review',
+                                         title: '',
+                                         rating: '',
+                                         content: ''} %>
 
-      <%= label_tag 'Rating:' %><br>
-      <%= text_field_tag :rating %><br><br>
-
-      <%= label_tag 'Content:' %>  <br>
-      <%= text_area_tag :content %><br><br>
-
-      <%= submit_tag 'Create Review' %>
-    <% end %>
   </section>
 </article>

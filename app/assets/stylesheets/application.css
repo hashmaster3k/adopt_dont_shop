@@ -210,7 +210,7 @@ a:active {
 .pbid-header-info form {
   display: grid;
   padding-right: 30px;
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .fav-button {
@@ -317,4 +317,38 @@ hr {
   margin: 15px;
   padding: 20px;
   background-color: beige;
+}
+
+.all-favs h1 {
+  margin: 15px;
+  background-color: #00d4ca8f;
+  padding: 10px;
+  font-size: 35px;
+}
+
+.all-favs p {
+  margin: 15px;
+  padding: 10px;
+  font-size: 25px;
+}
+
+.pet-app-box h1 {
+  margin: 15px;
+  background-color: #00d4ca8f;
+  padding: 10px;
+  font-size: 35px;
+}
+
+.applicants h1 {
+  margin: 15px;
+  background-color: #00d4ca8f;
+  padding: 10px;
+  font-size: 35px;
+}
+
+.applicants-box {
+  background-color: beige;
+  margin: 15px;
+  padding: 15px;
+  font-size: 20px;
 }

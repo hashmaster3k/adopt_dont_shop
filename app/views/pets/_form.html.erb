@@ -1,0 +1,18 @@
+<%= form_tag path, method: method do %>
+  <%= label_tag 'Pet Name:' %><br>
+  <%= text_field_tag :name, name %><br><br>
+
+  <%= label_tag 'Approxamite age:' %><br>
+  <%= text_field_tag :approx_age, approx_age %><br><br>
+
+  <%= label_tag 'Sex:' %>  <br>
+  <%= text_field_tag :sex, sex %><br><br>
+
+  <%= label_tag 'Image:' %><br>
+  <%= text_field_tag :image, image %><br><br>
+
+  <%= label_tag 'Description:' %><br>
+  <%= text_area_tag :description, description, size:'16x5' %><br><br>
+
+  <%= submit_tag submit_button %>
+<% end %>

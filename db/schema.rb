@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2020_08_31_015052) do
 
   create_table "reviews", force: :cascade do |t|
     t.string "title"
-    t.string "rating"
+    t.integer "rating"
     t.string "content"
     t.bigint "shelter_id"
     t.index ["shelter_id"], name: "index_reviews_on_shelter_id"

@@ -1,9 +1,8 @@
-# spec/features/application_pets/show_spec.rb
+# spec/features/shelters/delete_spec.rb
 
 require 'rails_helper'
 
-RSpec.describe 'Application pets show page' do
-
+RSpec.describe 'delete a shelter tests' do
   before :each do
     @shelter_1 = Shelter.create(name:'Shelter 1',
                                address:'123 Bradford Rd',
@@ -32,29 +31,21 @@ RSpec.describe 'Application pets show page' do
                                phone_num: "123-456-7890",
                                description: "I'm Bill Joel!",
                                pet_ids: ["#{@pet_1.id}"])
-
-  end
-  it "Can view applications for pets" do
-    visit "/pets/#{@pet_1.id}"
-
-    expect(page).to have_button("VIEW APPLICATIONS FOR #{@pet_1.name.upcase}")
-
-    click_button "VIEW APPLICATIONS FOR #{@pet_1.name.upcase}"
-
-    expect(current_path).to eq("/application_pets/#{@pet_1.id}")
   end
 
-  it "can list applicants and their links" do
-    visit "/application_pets/#{@pet_1.id}"
+  it 'cannot delete shelter if pet is pending adoption' do
+    visit "/applications/#{@app_1.id}"
 
-    expect(page).to have_link(@app_1.name)
-  end
+    within "##{@pet_1.id}" do
+      expect(page).to have_button('Approve Application')
+      click_button
+    end
 
-  it "currently has no applications" do
-    visit "/pets/#{@pet_2.id}"
+    visit "/shelters/#{@shelter_1.id}"
 
-    click_button "VIEW APPLICATIONS FOR #{@pet_2.name.upcase}"
+    click_button "Delete Shelter"
 
-    expect(page).to have_content("This pet currently has no applications")
+    expect(current_path).to eq("/shelters/#{@shelter_1.id}")
+    expect(page).to have_content("Unable to delete shelter due to pending pet approval")
   end
 end

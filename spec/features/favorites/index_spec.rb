@@ -13,17 +13,16 @@ RSpec.describe 'favorites index page' do
 
 
     @pet_1 = shelter_1.pets.create(image: 'dog1.jpg',
-                       name: 'Johnny',
-                       approx_age: 3,
-                       sex: 'male',
-                       shelter_id: shelter_1.id)
+                                   name: 'Johnny',
+                                   approx_age: 3,
+                                   sex: 'male',
+                                   shelter_id: shelter_1.id)
 
     @pet_2 = shelter_1.pets.create(image: 'dog2.jpg',
-                       name: 'Marg',
-                       approx_age: 2,
-                       sex: 'female',
-                       shelter_id: shelter_1.id)
-
+                                   name: 'Marg',
+                                   approx_age: 2,
+                                   sex: 'female',
+                                   shelter_id: shelter_1.id)
   end
 
   it 'has link to favorites page and can visit it' do
@@ -36,7 +35,7 @@ RSpec.describe 'favorites index page' do
   it 'can add pet to favorites' do
     visit "/pets/#{@pet_2.id}"
 
-    click_button 'ADD PET TO FAVORITES'
+    click_button "ADD #{@pet_2.name.upcase} TO FAVORITES"
 
     expect(current_path).to eq("/pets/#{@pet_2.id}")
     expect(page).to have_content('This pet has been added to your favorites')
@@ -45,9 +44,9 @@ RSpec.describe 'favorites index page' do
 
   it 'displays all favorite pets' do
     visit "/pets/#{@pet_1.id}"
-    click_button 'ADD PET TO FAVORITES'
+    click_button "ADD #{@pet_1.name.upcase} TO FAVORITES"
     visit "/pets/#{@pet_2.id}"
-    click_button 'ADD PET TO FAVORITES'
+    click_button "ADD #{@pet_2.name.upcase} TO FAVORITES"
 
     visit '/favorites'
 
@@ -65,7 +64,7 @@ RSpec.describe 'favorites index page' do
 
   it 'can remove a single pet from favorites' do
     visit "/pets/#{@pet_1.id}"
-    click_button 'ADD PET TO FAVORITES'
+    click_button "ADD #{@pet_1.name.upcase} TO FAVORITES"
 
     visit '/favorites'
 
@@ -79,9 +78,9 @@ RSpec.describe 'favorites index page' do
 
   it 'can remove all pets at once' do
     visit "/pets/#{@pet_1.id}"
-    click_button 'ADD PET TO FAVORITES'
+    click_button "ADD #{@pet_1.name.upcase} TO FAVORITES"
     visit "/pets/#{@pet_2.id}"
-    click_button 'ADD PET TO FAVORITES'
+    click_button "ADD #{@pet_2.name.upcase} TO FAVORITES"
 
     visit '/favorites'
 
@@ -97,9 +96,9 @@ RSpec.describe 'favorites index page' do
 
   it 'can show a list of all pets with applications' do
     visit "/pets/#{@pet_1.id}"
-    click_button 'ADD PET TO FAVORITES'
+    click_button "ADD #{@pet_1.name.upcase} TO FAVORITES"
     visit "/pets/#{@pet_2.id}"
-    click_button 'ADD PET TO FAVORITES'
+    click_button "ADD #{@pet_2.name.upcase} TO FAVORITES"
 
     visit '/favorites'
 
