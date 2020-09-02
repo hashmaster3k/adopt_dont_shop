@@ -108,11 +108,11 @@ RSpec.describe 'favorites index page' do
 
     expect(current_path).to eq('/application/new')
 
-    within "##{@pet_1.id}" do
+    within "#check-box-#{@pet_1.id}" do
       check
     end
 
-    within "##{@pet_2.id}" do
+    within "#check-box-#{@pet_2.id}" do
       check
     end
 

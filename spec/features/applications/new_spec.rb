@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'create new adoption application' do
+RSpec.describe 'new pet applications' do
   before :each do
     @shelter_1 = Shelter.create(name:'Shelter 1',
                                 address:'123 Bradford Rd',
@@ -49,7 +49,7 @@ RSpec.describe 'create new adoption application' do
 
     expect(current_path).to eq('/application/new')
 
-    within "##{@pet_2.id}" do
+    within "#check-box-#{@pet_2.id}" do
       check
     end
 
@@ -80,10 +80,10 @@ RSpec.describe 'create new adoption application' do
 
     expect(current_path).to eq('/application/new')
 
-    within "##{@pet_2.id}" do
+    within "#check-box-#{@pet_2.id}" do
       check
     end
-    within "##{@pet_1.id}" do
+    within "#check-box-#{@pet_1.id}" do
       check
     end
 
@@ -115,10 +115,10 @@ RSpec.describe 'create new adoption application' do
 
     expect(current_path).to eq('/application/new')
 
-    within "##{@pet_2.id}" do
+    within "#check-box-#{@pet_2.id}" do
       check
     end
-    within "##{@pet_1.id}" do
+    within "#check-box-#{@pet_1.id}" do
       check
     end
 
