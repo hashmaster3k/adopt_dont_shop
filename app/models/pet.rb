@@ -50,4 +50,8 @@ class Pet < ApplicationRecord
     applications.find(adopter_id).name
   end
 
+  def not_same_adopter?(id)
+    adopter_id != id
+  end
+
 end

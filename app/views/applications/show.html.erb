@@ -20,7 +20,7 @@
         <li>
         <div id=<%= pet.id %>>
           <%= link_to pet.name, "/pets/#{pet.id}" %>
-          <% if pet.adopter_id != @application.id || pet.adopt_pending == false %>
+          <% if pet.not_same_adopter?(@application.id) || pet.adopt_pending == false %>
             <%= form_tag "/pets/#{pet.id}", method: :patch do %>
               <%= hidden_field_tag :change, "status-approve" %>
               <%= hidden_field_tag :adopter_id, @application.id %>
