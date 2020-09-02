@@ -30,12 +30,10 @@ class PetsController < ApplicationController
   def update
     pet = Pet.find(params[:pet_id])
     if params[:change] == "status-approve" && pet.adopt_pending == false
-      pet.update_attribute(:adopt_pending, true)
-      pet.update_attribute(:adopter_id, params[:adopter_id])
+      pet.approve_pet_adoption(params[:adopter_id])
       redirect_to "/pets/#{pet.id}"
     elsif params[:change] == "status-revoke"
-      pet.update_attribute(:adopt_pending, false)
-      pet.update_attribute(:adopter_id, nil)
+      pet.revoke_pet_adoption
       redirect_to "/applications/#{params[:adopter_id]}"
     elsif pet.adopt_pending == true
       flash[:notice] = "Adoption pending for this pet already."
