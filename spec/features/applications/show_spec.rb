@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'application show page' do
+RSpec.describe 'applications show page' do
   before :each do
     @shelter_1 = Shelter.create!(name:'Shelter 1',
                                 address:'123 Bradford Rd',
@@ -10,29 +10,28 @@ RSpec.describe 'application show page' do
                                 state:'CA',
                                 zip:90210)
 
+    @pet_1 = @shelter_1.pets.create!(image: 'dog1.jpg',
+                                    name: 'Johnny',
+                                    approx_age: 3,
+                                    sex: 'male',
+                                    description: 'Cool pet!',
+                                    shelter_id: @shelter_1.id)
 
-     @pet_1 = @shelter_1.pets.create!(image: 'dog1.jpg',
-                        name: 'Johnny',
-                        approx_age: 3,
-                        sex: 'male',
-                        description: 'Cool pet!',
-                        shelter_id: @shelter_1.id)
+    @pet_2 = @shelter_1.pets.create!(image: 'dog2.jpg',
+                                    name: 'Marg',
+                                    approx_age: 2,
+                                    sex: 'female',
+                                    description: 'Sweet pet!',
+                                    shelter_id: @shelter_1.id)
 
-     @pet_2 = @shelter_1.pets.create!(image: 'dog2.jpg',
-                        name: 'Marg',
-                        approx_age: 2,
-                        sex: 'female',
-                        description: 'Sweet pet!',
-                        shelter_id: @shelter_1.id)
-
-     @app_1 = Application.create!(name: "Billy Joel",
-                                 address: "1234 Song St.",
-                                 city: "Las Vegas",
-                                 state: "NV",
-                                 zip: "12345",
-                                 phone_num: "123-456-7890",
-                                 description: "I'm Bill Joel!",
-                                 pet_ids: ["#{@pet_1.id}", "#{@pet_2.id}"])
+    @app_1 = Application.create!(name: "Billy Joel",
+                                address: "1234 Song St.",
+                                city: "Las Vegas",
+                                state: "NV",
+                                zip: "12345",
+                                phone_num: "123-456-7890",
+                                description: "I'm Bill Joel!",
+                                pet_ids: ["#{@pet_1.id}", "#{@pet_2.id}"])
   end
 
   it 'should show application details' do
@@ -49,7 +48,7 @@ RSpec.describe 'application show page' do
     expect(page).to have_link(@pet_2.name)
   end
 
-  it "show a approve button for each pet" do
+  it "can approve pet adoption" do
     visit "/applications/#{@app_1.id}"
 
     within "##{@pet_1.id}" do
@@ -90,7 +89,7 @@ RSpec.describe 'application show page' do
     expect(page).to have_content("Adoption pending for this pet already.")
   end
 
-  it 'can revoke approval of adoption' do
+  it 'can revoke pet adoption' do
     visit "/applications/#{@app_1.id}"
 
     within "##{@pet_1.id}" do

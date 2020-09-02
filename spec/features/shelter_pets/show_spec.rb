@@ -76,6 +76,6 @@ RSpec.describe 'shelter show pets' do
 
     visit "/shelters/#{shelter_1.id}/pets"
 
-    expect(page).to have_content("# of adoptable pets: 1")
+    expect(page).to have_content("#{shelter_1.pets.unadopted_pets.count} adoptable pets from #{shelter_1.name}")
   end
 end

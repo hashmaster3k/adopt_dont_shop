@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Application pets show page' do
+RSpec.describe 'application_pets show page' do
 
   before :each do
     @shelter_1 = Shelter.create(name:'Shelter 1',
@@ -36,7 +36,7 @@ RSpec.describe 'Application pets show page' do
                                pet_ids: ["#{@pet_1.id}"])
 
   end
-  it "Can view applications for pets" do
+  it "can view applications for pets" do
     visit "/pets/#{@pet_1.id}"
 
     expect(page).to have_button("VIEW APPLICATIONS FOR #{@pet_1.name.upcase}")
@@ -52,7 +52,7 @@ RSpec.describe 'Application pets show page' do
     expect(page).to have_link(@app_1.name)
   end
 
-  it "currently has no applications" do
+  it "display a message if there are no applications" do
     visit "/pets/#{@pet_2.id}"
 
     click_button "VIEW APPLICATIONS FOR #{@pet_2.name.upcase}"

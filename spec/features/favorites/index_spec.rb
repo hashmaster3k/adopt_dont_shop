@@ -108,11 +108,11 @@ RSpec.describe 'favorites index page' do
 
     expect(current_path).to eq('/application/new')
 
-    within "##{@pet_1.id}" do
+    within "#check-box-#{@pet_1.id}" do
       check
     end
 
-    within "##{@pet_2.id}" do
+    within "#check-box-#{@pet_2.id}" do
       check
     end
 
@@ -137,7 +137,7 @@ RSpec.describe 'favorites index page' do
     end
   end
 
-  it "display text when no pets have been applied for" do
+  it "can display text when no pets have been applied for" do
     visit "/favorites"
 
     expect(page).to have_content("No Pets Have Been Applied For")

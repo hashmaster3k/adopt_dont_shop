@@ -36,4 +36,26 @@ class Pet < ApplicationRecord
     Pet.all.sum {|pet| pet.applications.count}
   end
 
+  def approve_pet_adoption(adopter_id)
+    update_attribute(:adopt_pending, true)
+    update_attribute(:adopter_id, adopter_id)
+  end
+
+  def revoke_pet_adoption
+    update_attribute(:adopt_pending, false)
+    update_attribute(:adopter_id, nil)
+  end
+
+  def adopter_name
+    applications.find(adopter_id).name
+  end
+
+  def not_same_adopter?(id)
+    adopter_id != id
+  end
+
+  def num_of_applications_for_pet
+    applications.num_of_applications
+  end
+
 end

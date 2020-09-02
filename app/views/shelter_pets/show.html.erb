@@ -1,10 +1,9 @@
 <div class='page-title'>
-  <h1>Adoptable Pets from <%= @shelter.name %></h1>
-  <p># of adoptable pets: <%= @pets.total_pets %></p>
+  <h1><%= @shelter.num_adoptable_pets %> adoptable pets from <%= @shelter.name %></h1>
 </div>
 
 <article class='all-pets'>
-  <% @pets.each do |pet| %>
+  <% @shelter.adoptable_pets.each do |pet| %>
     <section class='pet-box'>
         <%= link_to "/pets/#{pet.id}" do %>
           <%= image_tag pet.image, :class => 'pet-image'  %>

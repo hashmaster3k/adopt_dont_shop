@@ -3,7 +3,7 @@
 
    <section class='applicants-box'>
      <ul>
-       <% if @pet.applications.num_of_applications > 0  %>
+       <% if @pet.num_of_applications_for_pet > 0  %>
         <% @pet.applications.each do |app| %>
           <li>Application #<%= app.id %> ---> <%= link_to app.name, "/applications/#{app.id}" %></li>
           <% end %>

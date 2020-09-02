@@ -8,8 +8,8 @@
       <%= label_tag "Choose what pets you'd like to adopt:" %><br>
       <% @favorites.each do |fav| %>
         <br>
-        <div class='check-box' id="<%= fav.id %>">
-          <%= check_box 'pet_ids', nil, {:mulitple => true}, fav.id, nil %>
+        <div class='check-box' id="check-box-<%= fav.id %>">
+          <%= check_box 'pet_ids', nil, {mulitple: true}, fav.id, nil %>
           <%= label_tag fav.name %>
         </div>
       <% end %><br>
@@ -58,7 +58,7 @@
       <%= text_field_tag :phone_num %><br><br>
 
       <%= label_tag 'Description:' %>  <br>
-      <%= text_field_tag :description %><br><br>
+      <%= text_area_tag :description %><br><br>
 
       <%= submit_tag 'Adopt!' %>
     <% end %>

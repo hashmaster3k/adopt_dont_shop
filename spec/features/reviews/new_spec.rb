@@ -14,7 +14,7 @@ RSpec.describe 'create new review' do
     visit "/shelters/#{shelter_1.id}/reviews/new"
 
     fill_in :title, with: 'Best Service Ever'
-    fill_in :rating, with: 5
+    choose :rating, option: 5
     fill_in :content, with: 'They really care!'
 
     click_button 'Create Review'

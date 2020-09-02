@@ -1,31 +1,27 @@
 <article class='all-favs'>
   <h1>Favorited Pets</h1>
-
   <% if @pets.total_pets > 0 %>
     <section class='adopt-process-button'>
       <%= button_to 'START ADOPTION PROCESS', "/application/new", method: :get %>
     </section>
-
     <section class='all-pets'>
       <% @pets.each do |pet| %>
 
        <div class='pet-box'>
           <%= link_to "/pets/#{pet.id}" do %>
-            <%= image_tag pet.image, :class => 'pet-image'  %>
+            <%= image_tag pet.image, class: 'pet-image'  %>
           <% end %>
 
-
           <div class='pet-info'>
-            <h3><%= link_to pet.name, "/pets/#{pet.id}", :class => 'pet-link' %></h3>
+            <h3><%= link_to pet.name, "/pets/#{pet.id}", class: 'pet-link' %></h3>
           </div>
 
           <div class="pet-buttons-<%=pet.id%>">
-            <%=  button_to "REMOVE PET FROM FAVORITES", "/favorites/#{pet.id}",  method: :delete, :class => 'fav-button' %>
+            <%=  button_to "REMOVE PET FROM FAVORITES", "/favorites/#{pet.id}",  method: :delete, class: 'fav-button' %>
           </div>
         </div>
       <% end %>
     </section>
-
     <section class='remove-all-favs'>
       <%= button_to 'REMOVE ALL PETS FROM FAVORITES', "/favorites/all", method: :delete %>
     </section>
@@ -37,22 +33,21 @@
 <article class="pet-app-box">
   <h1>Pets with current Applications</h1>
   <section class="all-app-pets">
-      <% if @applied_pets.total_pets > 0 %>
-      <% @applied_pets.each do |pet| %>
-        <div class='pet-box' id='pet-box-<#%= pet.id %>'>
-          <%= link_to "/pets/#{pet.id}" do %>
-            <%= image_tag pet.image, :class => 'pet-image'  %>
-            <% end %>
+    <% if @applied_pets.total_pets > 0 %>
+    <% @applied_pets.each do |pet| %>
+      <div class='pet-box' id='pet-box-<#%= pet.id %>'>
+        <%= link_to "/pets/#{pet.id}" do %>
+          <%= image_tag pet.image, class: 'pet-image'  %>
+          <% end %>
 
 
-            <div class='pet-info'>
-              <h3><%= link_to pet.name, "/pets/#{pet.id}", :class => 'pet-link' %></h3>
-            </div>
+          <div class='pet-info'>
+            <h3><%= link_to pet.name, "/pets/#{pet.id}", class: 'pet-link' %></h3>
           </div>
-          <% end  %>
-        <% else %>
-        <p id='no-pets-app'>No Pets Have Been Applied For</p>
-    <% end  %>
+        </div>
+        <% end  %>
+      <% else %>
+      <p id='no-pets-app'>No Pets Have Been Applied For</p>
+  <% end  %>
  </section>
-
 </article>
