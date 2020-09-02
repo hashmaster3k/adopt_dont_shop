@@ -12,4 +12,8 @@ class Shelter < ApplicationRecord
     pets.remove_select_pets_from_db(pets)
     destroy
   end
+
+  def has_reviews?
+    !reviews.empty?
+  end
 end

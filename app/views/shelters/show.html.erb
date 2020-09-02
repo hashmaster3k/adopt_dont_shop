@@ -22,8 +22,8 @@
   </section>
   <section class="reviews-box">
     <h1>Reviews</h1>
-      <% if @reviews != nil %>
-        <% @reviews.each do |review| %>
+      <% if @shelter.has_reviews? %>
+        <% @shelter.reviews.each do |review| %>
           <div class='review'>
             <%= review.title %> | Rating: <%= review.rating %>
             <br><br>
@@ -36,10 +36,11 @@
           </div>
           <hr>
         <% end %>
+      <% else %>
+        <p>This shelter currently has no reviews</p>
       <% end %>
     <div class='review-link'>
       <%= link_to 'CREATE NEW REVIEW', "/shelters/#{@shelter.id}/reviews/new" %>
     </div>
   </section>
-
 </article>
