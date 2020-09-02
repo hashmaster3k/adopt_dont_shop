@@ -16,4 +16,12 @@ class Shelter < ApplicationRecord
   def has_reviews?
     !reviews.empty?
   end
+
+  def adoptable_pets
+    pets.unadopted_pets
+  end
+
+  def num_adoptable_pets
+    adoptable_pets.count
+  end
 end
