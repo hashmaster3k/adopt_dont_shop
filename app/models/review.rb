@@ -7,10 +7,6 @@ class Review < ApplicationRecord
   end
 
   def self.average_rating
-    if Review.count == 0
-      0
-    else
-      Review.sum(:rating).to_f / Review.count.to_f
-    end
+    Review.average(:rating).to_f.round(1)
   end
 end

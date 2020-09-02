@@ -6,4 +6,10 @@ class Shelter < ApplicationRecord
   validates_presence_of :city
   validates_presence_of :state
   validates_presence_of :zip
+
+  def remove_shelter_and_associations(pets)
+    reviews.delete_associated_reviews
+    pets.remove_select_pets_from_db(pets)
+    destroy
+  end
 end

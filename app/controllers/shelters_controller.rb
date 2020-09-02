@@ -39,15 +39,12 @@ class SheltersController < ApplicationController
 
   def destroy
     shelter = Shelter.find(params[:shelter_id])
-
     if shelter.pets.pets_pending?
       flash[:notice] = 'Unable to delete shelter due to pending pet approval'
       redirect_to "/shelters/#{shelter.id}"
     else
-      shelter.reviews.delete_associated_reviews
-      shelter.pets.remove_select_pets_from_db(shelter.pets)
-      shelter.destroy
-      flash[:notice] = "Successfully deleted shelter and it's pets"
+      shelter.remove_shelter_and_associations(shelter.pets)
+      flash[:notice] = "Successfully deleted shelter, it's pets and reviews"
       redirect_to '/shelters'
     end
   end
