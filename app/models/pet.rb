@@ -54,4 +54,8 @@ class Pet < ApplicationRecord
     adopter_id != id
   end
 
+  def num_of_applications_for_pet
+    applications.num_of_applications
+  end
+
 end
