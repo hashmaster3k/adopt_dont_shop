@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'new pet applications' do
+RSpec.describe 'applications new page' do
   before :each do
     @shelter_1 = Shelter.create(name:'Shelter 1',
                                 address:'123 Bradford Rd',
@@ -37,7 +37,7 @@ RSpec.describe 'new pet applications' do
     expect(page).to have_button('START ADOPTION PROCESS')
   end
 
-  it 'it can select a few pets and submit' do
+  it 'can select a few pets and submit' do
     visit "/pets/#{@pet_1.id}"
     click_button "ADD #{@pet_1.name.upcase} TO FAVORITES"
     visit "/pets/#{@pet_2.id}"
@@ -68,7 +68,7 @@ RSpec.describe 'new pet applications' do
     expect(page).to have_content(@pet_1.name)
   end
 
-  it 'it can select all pets and submit' do
+  it 'can select all pets and submit' do
     visit "/pets/#{@pet_1.id}"
     click_button "ADD #{@pet_1.name.upcase} TO FAVORITES"
     visit "/pets/#{@pet_2.id}"
@@ -102,7 +102,7 @@ RSpec.describe 'new pet applications' do
     expect(page).to have_content("No favorited pets :( Please add some!")
   end
 
-  it "Flashes an notice if form isn't complete" do
+  it "flash a notice if form is incomplete" do
 
     visit "/pets/#{@pet_1.id}"
     click_button "ADD #{@pet_1.name.upcase} TO FAVORITES"

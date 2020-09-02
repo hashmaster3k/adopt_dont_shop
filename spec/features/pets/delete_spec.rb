@@ -12,24 +12,23 @@ RSpec.describe 'delete a shelter tests' do
 
 
     @pet_1 = @shelter_1.pets.create(image: 'dog1.jpg',
-                       name: 'Johnny',
-                       approx_age: 3,
-                       sex: 'male',
-                       description: 'Cool pet!',
-                       shelter_id: @shelter_1.id)
+                                   name: 'Johnny',
+                                   approx_age: 3,
+                                   sex: 'male',
+                                   description: 'Cool pet!',
+                                   shelter_id: @shelter_1.id)
 
     @app_1 = Application.create!(name: "Billy Joel",
-                              address: "1234 Song St.",
-                              city: "Las Vegas",
-                              state: "NV",
-                              zip: "12345",
-                              phone_num: "123-456-7890",
-                              description: "I'm Bill Joel!",
-                              pet_ids: ["#{@pet_1.id}"])
+                                address: "1234 Song St.",
+                                city: "Las Vegas",
+                                state: "NV",
+                                zip: "12345",
+                                phone_num: "123-456-7890",
+                                description: "I'm Bill Joel!",
+                                pet_ids: ["#{@pet_1.id}"])
   end
 
   it "can not delete pet if applications is pending" do
-
     visit "/applications/#{@app_1.id}"
 
     within "##{@pet_1.id}" do
@@ -38,7 +37,6 @@ RSpec.describe 'delete a shelter tests' do
     end
 
     visit "/pets"
-
     click_button "Remove Pet"
 
     expect(page).to have_content("Adoption status Pending. Can't Remove")
@@ -46,15 +44,13 @@ RSpec.describe 'delete a shelter tests' do
   end
 
   it "can delete a pet and remove from favorites" do
-
     visit "/pets/#{@pet_1.id}"
     click_button "ADD #{@pet_1.name.upcase} TO FAVORITES"
 
     visit "/pets"
-
     click_button "Remove Pet"
-
     visit '/favorites'
+
     expect(page).to_not have_content(@pet_1.name)
   end
 end

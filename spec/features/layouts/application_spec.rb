@@ -2,7 +2,7 @@
 
  require 'rails_helper'
 
- RSpec.describe 'header and nav bar'  do
+ RSpec.describe 'application html'  do
 
    it 'should always show links to home, shelter and pets' do
      visit '/'
