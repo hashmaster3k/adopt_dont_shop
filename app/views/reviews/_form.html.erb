@@ -1,12 +1,17 @@
 <%= form_tag path, method: method do%>
   <%= label_tag 'Title:' %><br>
-  <%= text_field_tag :title %><br><br>
+  <%= text_field_tag :title, title %><br><br>
 
   <%= label_tag 'Rating:' %><br>
-  <%= text_field_tag :rating %><br><br>
+  <%= radio_button_tag :rating, 1 %>1
+  <%= radio_button_tag :rating, 2 %>2
+  <%= radio_button_tag :rating, 3 %>3
+  <%= radio_button_tag :rating, 4 %>4
+  <%= radio_button_tag :rating, 5 %>5<br><br>
+
 
   <%= label_tag 'Content:' %>  <br>
-  <%= text_area_tag :content %><br><br>
+  <%= text_area_tag :content, content %><br><br>
 
   <%= submit_tag submit_button %>
 <% end %>
