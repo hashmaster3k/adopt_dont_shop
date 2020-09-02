@@ -3,29 +3,28 @@
     <div class='pbid-header-info'>
       <div class='pbid-header-info-text'>
         <h1>Meet <%= @pet.name %>!</h1>
-        <p>About: <br><%= @pet.description %></p>
+        <p><%= @pet.description %></p>
         <ul>
           <li>Age: <%= @pet.approx_age %></li>
           <li>Sex: <%= @pet.sex %></li>
           <li>Adoption Status: <% if @pet.adopt_pending == true && @pet.adopted? == false %>
-                                  Pending, on hold for <%= @pet.applications.find(@pet.adopter_id).name %>
+                                  Pending --> on hold for <%= @pet.adopter_name %>
                                 <% elsif @pet.adopted? == false %>
-                                  <%= "Ready for adoption!" %>
+                                  Ready for adoption!
                                 <% else %>
-                                  <%= "Gone to a great home!" %>
+                                  Gone to a great home!
                                 <% end %></li>
         </ul>
-          <%  if  session[:favorites] != nil && session[:favorites].include?(@pet.id.to_s)%>
-            <%= button_to "REMOVE PET FROM FAVORITES", "/favorites/#{@pet.id}",  method: :delete, :class => 'fav-button' %>
+          <% if favorite.has_contents? && favorite.includes_id?(@pet.id) %>
+            <%= button_to "REMOVE PET FROM FAVORITES", "/favorites/#{@pet.id}", method: :delete, class: 'fav-button' %>
           <% else %>
-            <%= button_to "ADD #{@pet.name.upcase} TO FAVORITES", "/favorites/#{@pet.id}",  method: :post, :class => 'fav-button' %>
-            <%= button_to "VIEW APPLICATIONS FOR #{@pet.name.upcase}", "/application_pets/#{@pet.id}",  method: :get, :class => 'fav-button' %>
+            <%= button_to "ADD #{@pet.name.upcase} TO FAVORITES", "/favorites/#{@pet.id}", method: :post, class:'fav-button' %>
+            <%= button_to "VIEW APPLICATIONS FOR #{@pet.name.upcase}", "/application_pets/#{@pet.id}", method: :get, class: 'fav-button' %>
           <% end %>
-
        </div>
     </div>
     <div class='pbid-header-image'>
-      <%= image_tag  "#{@pet.image}"%>
+      <%= image_tag "#{@pet.image}"%>
     </div>
   </section>
 </article>

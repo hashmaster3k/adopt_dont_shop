@@ -46,4 +46,8 @@ class Pet < ApplicationRecord
     update_attribute(:adopter_id, nil)
   end
 
+  def adopter_name
+    applications.find(adopter_id).name
+  end
+
 end

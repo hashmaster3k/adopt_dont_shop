@@ -25,6 +25,14 @@ class Favorite
     end
   end
 
+  def includes_id?(id)
+    @contents.include?(id.to_s)
+  end
+
+  def has_contents?
+    !@contents.empty?
+  end
+
   def count_contents
     @contents.count
   end
